@@ -1,6 +1,7 @@
 package roadmaps
 
 import (
+	"go-by-the-roads/backend/utils"
 	"log"
 	"slices"
 )
@@ -49,13 +50,15 @@ func (ss SiteSlice) IsSorted() bool {
 	return true
 }
 
+// Removes duplicates
 func (ss *SiteSlice) Sanitize() {
+	log.Println("[Sanitize] called")
 	// was here
 }
 
 func (ss *SiteSlice) SortById() {
 	if len(*ss) < 2 {
-		log.Println("SortById() was called even if SiteSlice object had a length < 2")
+		log.Println(utils.WARNING_STR + " [SortById] called even if SiteSlice object had a len < 2")
 		return
 	}
 
