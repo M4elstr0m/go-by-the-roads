@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"go-by-the-roads/backend/app"
+	"log"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -32,6 +33,6 @@ func main() {
 	})
 
 	if err != nil {
-		println("Error:", err.Error())
+		log.Println("Error:", err.Error())
 	}
 }
