@@ -1,5 +1,7 @@
 package roadmaps
 
+import "slices"
+
 // What would be the use of a map if there was no interesting sites to visit?
 //
 // Structure corresponding to a task the user wants to achieve
@@ -34,6 +36,20 @@ func NewSiteFromMap(m Map) Site {
 // Slice of Site type
 type SiteSlice []Site
 
+// Insert s at its right index in ss
+//
+// If it replaces another Site, all Site.Id values from ss[s.Id+1:] are incremented by 1 (Site.Id++)
 func (ss *SiteSlice) Insert(s Site) {
-	// was here
+	var l uint = uint(len(*ss))
+
+	if s.Id > l {
+		s.Id = l
+	}
+
+	*ss = slices.Insert(*ss, int(s.Id), s)
+
+	for i := s.Id + 1; i < l+1; i++ {
+		(*ss)[i].Id++
+	}
+
 }
