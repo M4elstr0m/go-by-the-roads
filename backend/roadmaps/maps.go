@@ -7,3 +7,11 @@ type Map struct {
 	Title    string    // Title of the whole roadmap
 	Elements SiteSlice // An ordered slice containing each user's Site
 }
+
+// Returns a new Map instance
+func NewMap() Map {
+	return Map{
+		Title:    "New Roadmap",
+		Elements: make(SiteSlice, 0),
+	}
+}
