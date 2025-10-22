@@ -1,6 +1,10 @@
 package roadmaps
 
-import "slices"
+import (
+	"go-by-the-roads/backend/utils"
+	"log"
+	"slices"
+)
 
 // What would be the use of a map if there was no interesting sites to visit?
 //
@@ -11,25 +15,25 @@ type Site struct {
 	// Each Id must be unique within a slice of Site
 	//
 	// The lower the Id is, the sooner the task should be completed
-	Id uint
+	id uint
 
-	Title       string // Title of a Site (will be written in bold)
-	Description string // Short description of a Site (will be written in regular)
-	Content     string // Content of a Site (will be shown on hover)
+	title       string // Title of a Site (will be written in bold)
+	description string // Short description of a Site (will be written in regular)
+	content     string // Content of a Site (will be shown on hover)
 
-	Completed bool // Indicator of completion
+	completed bool // Indicator of completion
 }
 
 // Returns a new Site instance depending on a Map
 func NewSiteFromMap(m Map) Site {
 	return Site{
-		Id: uint(len(m.Elements)),
+		id: uint(len(m.elements)),
 
-		Title:       "New Site",
-		Description: "",
-		Content:     "",
+		title:       "New Site",
+		description: "",
+		content:     "",
 
-		Completed: false,
+		completed: false,
 	}
 }
 
@@ -42,14 +46,32 @@ type SiteSlice []Site
 func (ss *SiteSlice) Insert(s Site) {
 	var l uint = uint(len(*ss))
 
-	if s.Id > l {
-		s.Id = l
+	if s.id > l {
+		s.id = l
 	}
 
-	*ss = slices.Insert(*ss, int(s.Id), s)
+	*ss = slices.Insert(*ss, int(s.id), s)
 
-	for i := s.Id + 1; i < l+1; i++ {
-		(*ss)[i].Id++
+	for i := s.id + 1; i < l+1; i++ {
+		(*ss)[i].id++
 	}
 
 }
+
+func (ss *SiteSlice) Remove(s Site) {
+	var l uint = uint(len(*ss))
+
+	if s.id >= l {
+		log.Println(utils.WARNING_STR + " [SiteSlice.Remove] aborted")
+		return
+	}
+
+	*ss = slices.Delete(*ss, int(s.id), int(s.id)+1)
+
+	for i := s.id; i < l-1; i++ {
+		(*ss)[i].id--
+	}
+}
+
+// Add / Delete
+// Display in React
