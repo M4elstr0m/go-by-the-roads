@@ -16,6 +16,12 @@ func NewMap() Map {
 	}
 }
 
+// Add a Site instance to a Map
 func (m *Map) Add(s Site) {
 	m.elements.Insert(s)
+}
+
+// Delete a Site instance to a Map
+func (m *Map) Delete(s Site) {
+	m.elements.Remove(s)
 }

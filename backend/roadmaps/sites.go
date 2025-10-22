@@ -72,6 +72,3 @@ func (ss *SiteSlice) Remove(s Site) {
 		(*ss)[i].id--
 	}
 }
-
-// Add / Delete
-// Display in React

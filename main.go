@@ -3,6 +3,8 @@ package main
 import (
 	"embed"
 	"go-by-the-roads/backend/app"
+	"go-by-the-roads/backend/roadmaps"
+	"go-by-the-roads/backend/settings"
 	"log"
 
 	"github.com/wailsapp/wails/v2"
@@ -12,6 +14,13 @@ import (
 
 //go:embed all:frontend/dist
 var assets embed.FS
+
+var preferences *settings.Settings = &settings.Preferences
+var roadmapLoader *roadmaps.MapLoader = &roadmaps.RoadmapLoader
+
+func init() {
+	roadmapLoader.Load()
+}
 
 func main() {
 	// Create an instance of the app structure
@@ -36,3 +45,6 @@ func main() {
 		log.Println("Error:", err.Error())
 	}
 }
+
+// load settings (containing path for roadmaps)
+// map loader load all roadmaps
