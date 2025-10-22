@@ -19,6 +19,7 @@ var preferences *settings.Settings = &settings.Preferences
 var roadmapLoader *roadmaps.MapLoader = &roadmaps.RoadmapLoader
 
 func init() {
+	preferences.Load()
 	roadmapLoader.Load()
 }
 
