@@ -2,7 +2,11 @@ module go-by-the-roads
 
 go 1.23
 
-require github.com/wailsapp/wails/v2 v2.10.2
+require (
+	github.com/creasty/defaults v1.8.0
+	github.com/fatih/color v1.18.0
+	github.com/wailsapp/wails/v2 v2.10.2
+)
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect

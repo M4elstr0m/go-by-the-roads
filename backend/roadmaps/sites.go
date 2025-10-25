@@ -62,7 +62,7 @@ func (ss *SiteSlice) Remove(s Site) {
 	var l uint = uint(len(*ss))
 
 	if s.id >= l {
-		log.Println(utils.WARNING_STR + " [SiteSlice.Remove] aborted")
+		log.Println(utils.WARNING_STR + "[SiteSlice.Remove] aborted: [s.id >= l]")
 		return
 	}
 
