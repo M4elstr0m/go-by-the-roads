@@ -16,12 +16,9 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-var preferences *settings.Settings = &settings.Preferences
-var roadmapLoader *roadmaps.MapLoader = &roadmaps.RoadmapLoader
-
 func init() {
-	preferences.Load() // will create settings.json on first launch
-	roadmapLoader.Load()
+	settings.Preferences.Load() // will create settings.json on first launch
+	roadmaps.RoadmapLoader.Load()
 }
 
 func main() {
@@ -49,7 +46,7 @@ func main() {
 			log.Println("Error:", err.Error())
 		}
 	} else {
-		fmt.Printf("%v", preferences.RoadmapsPath)
+		fmt.Printf("%v", settings.Preferences.RoadmapsPath)
 	}
 }
 
