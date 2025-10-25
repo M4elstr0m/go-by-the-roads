@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"go-by-the-roads/backend/app"
 	"go-by-the-roads/backend/roadmaps"
 	"go-by-the-roads/backend/settings"
@@ -19,31 +20,36 @@ var preferences *settings.Settings = &settings.Preferences
 var roadmapLoader *roadmaps.MapLoader = &roadmaps.RoadmapLoader
 
 func init() {
-	preferences.Load()
+	preferences.Load() // will create settings.json on first launch
 	roadmapLoader.Load()
 }
 
 func main() {
-	// Create an instance of the app structure
-	app := app.NewApp()
+	const testingMode bool = true
+	if !testingMode {
+		// Create an instance of the app structure
+		app := app.NewApp()
 
-	// Create application with options
-	err := wails.Run(&options.App{
-		Title:  "go-by-the-roads",
-		Width:  1024,
-		Height: 576,
-		AssetServer: &assetserver.Options{
-			Assets: assets,
-		},
-		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        app.Startup,
-		Bind: []interface{}{
-			app,
-		},
-	})
+		// Create application with options
+		err := wails.Run(&options.App{
+			Title:  "go-by-the-roads",
+			Width:  1024,
+			Height: 576,
+			AssetServer: &assetserver.Options{
+				Assets: assets,
+			},
+			BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
+			OnStartup:        app.Startup,
+			Bind: []interface{}{
+				app,
+			},
+		})
 
-	if err != nil {
-		log.Println("Error:", err.Error())
+		if err != nil {
+			log.Println("Error:", err.Error())
+		}
+	} else {
+		fmt.Printf("%v", preferences.RoadmapsPath)
 	}
 }
 
