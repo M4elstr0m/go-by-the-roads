@@ -18,7 +18,7 @@ var assets embed.FS
 
 func init() {
 	settings.Preferences.Load() // will create settings.json on first launch
-	roadmaps.RoadmapLoader.Load()
+	roadmaps.RoadmapLoader.Scan()
 }
 
 func main() {
@@ -46,7 +46,9 @@ func main() {
 			log.Println("Error:", err.Error())
 		}
 	} else {
-		fmt.Printf("%v", settings.Preferences.RoadmapsPath)
+		fmt.Printf("%v\n", settings.Preferences.RoadmapsPath)
+		roadmaps.RoadmapLoader.Load("new")
+		fmt.Printf("%v\n", roadmaps.RoadmapLoader.Content)
 	}
 }
 

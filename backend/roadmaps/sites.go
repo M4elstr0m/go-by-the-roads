@@ -17,23 +17,23 @@ type Site struct {
 	// The lower the Id is, the sooner the task should be completed
 	id uint
 
-	title       string // Title of a Site (will be written in bold)
-	description string // Short description of a Site (will be written in regular)
-	content     string // Content of a Site (will be shown on hover)
+	Title       string `json:"title"`   // Title of a Site (will be written in bold)
+	Description string `json:"desc"`    // Short description of a Site (will be written in regular)
+	Content     string `json:"content"` // Content of a Site (will be shown on hover)
 
-	completed bool // Indicator of completion
+	Completed bool `json:"completed"` // Indicator of completion
 }
 
 // Returns a new Site instance depending on a Map
 func NewSiteFromMap(m Map) Site {
 	return Site{
-		id: uint(len(m.elements)),
+		id: uint(len(m.Elements)),
 
-		title:       "New Site",
-		description: "",
-		content:     "",
+		Title:       "New Site",
+		Description: "",
+		Content:     "",
 
-		completed: false,
+		Completed: false,
 	}
 }
 
