@@ -47,7 +47,7 @@ func main() {
 		}
 	} else {
 		fmt.Printf("%v\n", settings.Preferences.RoadmapsPath)
-		roadmaps.RoadmapLoader.Load("new")
+		roadmaps.RoadmapLoader.Load(roadmaps.RoadmapLoader.ScannedFolders[0])
 		fmt.Printf("%v\n", roadmaps.RoadmapLoader.Content)
 	}
 }

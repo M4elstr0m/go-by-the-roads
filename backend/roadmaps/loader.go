@@ -11,15 +11,15 @@ import (
 )
 
 type MapLoader struct {
-	scannedFolders []string
+	ScannedFolders []string
 	Content        Map `json:"data"`
 }
 
 var RoadmapLoader MapLoader // Global var storing the roadmaps loaded
 
 func (ml *MapLoader) Scan() []string {
-	var oldScannedFolders []string = ml.scannedFolders
-	ml.scannedFolders = []string{}
+	var oldScannedFolders []string = ml.ScannedFolders
+	ml.ScannedFolders = []string{}
 
 	var localMapLoader MapLoader
 
@@ -43,28 +43,23 @@ func (ml *MapLoader) Scan() []string {
 				err = jsonParser.Decode(&localMapLoader)
 			}
 			defer roadmapData.Close()
-
-			// format
-			if ml.Content.Title != folderName {
-				ml.Content.Title = folderName
-			}
 		}
 
 		if err != nil {
-			log.Printf(utils.WARNING_STR+"[MapLoader.Scan] roadmap \"%s\" is unavailable: %v", folderName, err)
+			log.Printf(utils.WARNING_STR+"[MapLoader.Scan] roadmap \"%s\" is unavailable: %v. Skipping...", folderName, err)
 		} else {
-			ml.scannedFolders = append(ml.scannedFolders, folderName)
+			ml.ScannedFolders = append(ml.ScannedFolders, folderName)
 		}
 
 	}
 
-	return ml.scannedFolders
+	return ml.ScannedFolders
 }
 
 func (ml *MapLoader) Load(name string) {
 	var roadmapsPath string = settings.Preferences.RoadmapsPath
 
-	if slices.Contains(ml.scannedFolders, name) {
+	if slices.Contains(ml.ScannedFolders, name) {
 		var dataPath string = filepath.Join(roadmapsPath, name, "data.json")
 
 		var err error
@@ -84,6 +79,11 @@ func (ml *MapLoader) Load(name string) {
 				ml.Content.Elements[i].id = uint(i)
 			}
 
+			// format
+			if ml.Content.Title != name {
+				ml.Content.Title = name
+			}
+
 			log.Printf(utils.INFO_STR + "[MapLoader.Load] loaded roadmap successfully")
 		}
 
@@ -92,4 +92,36 @@ func (ml *MapLoader) Load(name string) {
 	}
 }
 
-// MapLoader.Save()
+func (ml *MapLoader) Save() {
+	var err error
+
+	var roadmapPath string = filepath.Join(settings.Preferences.RoadmapsPath, ml.Content.Title, "data.json")
+
+	roadmapFile, err := os.Open(roadmapPath)
+	if err != nil {
+		log.Printf(utils.WARNING_STR+"[MapLoader.Save] %v", err)
+
+		err = nil
+
+		// tries to create a new file
+		log.Printf(utils.INFO_STR+"[MapLoader.Save] creating %s", roadmapPath)
+		roadmapFile, err = os.Create(roadmapPath)
+		if err != nil {
+			log.Fatalf(utils.FATAL_STR + "[MapLoader.Save] %v")
+		}
+	}
+	defer roadmapFile.Close()
+
+	jsonEncoder := json.NewEncoder(roadmapFile)
+
+	err = jsonEncoder.Encode(ml)
+	if err != nil {
+		log.Printf(utils.WARNING_STR+"[MapLoader.Save] %v", err)
+
+		log.Printf(utils.WARNING_STR+"[MapLoader.Save] could not save Roadmap into \"%s\"", roadmapPath)
+	} else {
+		log.Printf(utils.INFO_STR+"[MapLoader.Save] saved Roadmap into \"%s\"", roadmapPath)
+	}
+}
+
+// style field recovery
