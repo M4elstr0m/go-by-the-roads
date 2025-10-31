@@ -94,8 +94,3 @@ func (stgs *Settings) Save() {
 		log.Printf(utils.INFO_STR+"[Settings.Save] saved Settings into \"%s\"", settingsPath)
 	}
 }
-
-func (stgs *Settings) Modify() {
-	// modify local variable
-	// export it [call to Save()] to json file
-}
