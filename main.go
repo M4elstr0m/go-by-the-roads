@@ -52,5 +52,4 @@ func main() {
 	}
 }
 
-// load settings (containing path for roadmaps)
-// map loader load all roadmaps
+// style field recovery

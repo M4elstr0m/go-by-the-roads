@@ -17,6 +17,9 @@ type MapLoader struct {
 
 var RoadmapLoader MapLoader // Global var storing the roadmaps loaded
 
+// Scans for every available roadmaps currently in the Settings.RoadmapsPath folder
+//
+// Ignores invalid entries
 func (ml *MapLoader) Scan() []string {
 	var oldScannedFolders []string = ml.ScannedFolders
 	ml.ScannedFolders = []string{}
@@ -56,11 +59,10 @@ func (ml *MapLoader) Scan() []string {
 	return ml.ScannedFolders
 }
 
+// Loads a given Roadmap from Settings.RoadmapsPath/{name}
 func (ml *MapLoader) Load(name string) {
-	var roadmapsPath string = settings.Preferences.RoadmapsPath
-
 	if slices.Contains(ml.ScannedFolders, name) {
-		var dataPath string = filepath.Join(roadmapsPath, name, "data.json")
+		var dataPath string = filepath.Join(settings.Preferences.RoadmapsPath, name, "data.json")
 
 		var err error
 
@@ -92,20 +94,21 @@ func (ml *MapLoader) Load(name string) {
 	}
 }
 
+// Save loaded Roadmap into Settings.RoadmapsPath/{name}/data.json
 func (ml *MapLoader) Save() {
 	var err error
 
-	var roadmapPath string = filepath.Join(settings.Preferences.RoadmapsPath, ml.Content.Title, "data.json")
+	var dataPath string = filepath.Join(settings.Preferences.RoadmapsPath, ml.Content.Title, "data.json")
 
-	roadmapFile, err := os.Open(roadmapPath)
+	roadmapFile, err := os.Open(dataPath)
 	if err != nil {
 		log.Printf(utils.WARNING_STR+"[MapLoader.Save] %v", err)
 
 		err = nil
 
 		// tries to create a new file
-		log.Printf(utils.INFO_STR+"[MapLoader.Save] creating %s", roadmapPath)
-		roadmapFile, err = os.Create(roadmapPath)
+		log.Printf(utils.INFO_STR+"[MapLoader.Save] creating %s", dataPath)
+		roadmapFile, err = os.Create(dataPath)
 		if err != nil {
 			log.Fatalf(utils.FATAL_STR + "[MapLoader.Save] %v")
 		}
@@ -118,10 +121,10 @@ func (ml *MapLoader) Save() {
 	if err != nil {
 		log.Printf(utils.WARNING_STR+"[MapLoader.Save] %v", err)
 
-		log.Printf(utils.WARNING_STR+"[MapLoader.Save] could not save Roadmap into \"%s\"", roadmapPath)
+		// no defaulting for user data (no overwrite)
+
+		log.Printf(utils.WARNING_STR+"[MapLoader.Save] could not save Roadmap into \"%s\"", dataPath)
 	} else {
-		log.Printf(utils.INFO_STR+"[MapLoader.Save] saved Roadmap into \"%s\"", roadmapPath)
+		log.Printf(utils.INFO_STR+"[MapLoader.Save] saved Roadmap into \"%s\"", dataPath)
 	}
 }
-
-// style field recovery
