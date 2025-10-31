@@ -4,7 +4,4 @@ frontend/dist
 tests
 
 data/settings/*
-data/roadmap/*
-
-!data/settings/.gitkeep
-!data/roadmap/.gitkeep
+data/roadmaps/*
