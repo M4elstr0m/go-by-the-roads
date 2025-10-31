@@ -2,4 +2,9 @@ build/bin
 node_modules
 frontend/dist
 tests
-data/settings/settings.json
+
+data/settings/*
+data/roadmap/*
+
+!data/settings/.gitkeep
+!data/roadmap/.gitkeep

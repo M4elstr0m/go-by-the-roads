@@ -20,3 +20,4 @@ JSON with ID, Title, Description, Content
 
 Can ADD & DELETE entry from APP
 
+data/roadmaps : Each folder is a roadmap that can be used in this software
