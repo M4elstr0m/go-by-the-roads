@@ -1,3 +1,4 @@
+// roadmaps is an internal package containing all the tools to build a project roadmap
 package roadmaps
 
 import (
@@ -10,14 +11,20 @@ import (
 	"slices"
 )
 
+// MapLoader is a type handling external data input and output
 type MapLoader struct {
+	// List of folders located under {Settings.Preferences.RoadmapsPath}
 	ScannedFolders []string
-	Content        Map `json:"data"`
+
+	// Content of a roadmap
+	//
+	// See also: Map
+	Content Map `json:"data"`
 }
 
-var RoadmapLoader MapLoader // Global var storing the roadmaps loaded
+var RoadmapLoader MapLoader // Global variable storing the current roadmap
 
-// Scans for every available roadmaps currently in the Settings.RoadmapsPath folder
+// Scan searches for every available roadmaps currently located under {Settings.Preferences.RoadmapsPath}
 //
 // Ignores invalid entries
 func (ml *MapLoader) Scan() []string {
@@ -59,7 +66,10 @@ func (ml *MapLoader) Scan() []string {
 	return ml.ScannedFolders
 }
 
-// Loads a given Roadmap from Settings.RoadmapsPath/{name}
+// Load reads a given Roadmap located under {Settings.Preferences.RoadmapsPath}/{name}
+//
+// Parameters:
+//   - name: Name of a roadmap, mostly folder names.
 func (ml *MapLoader) Load(name string) {
 	if slices.Contains(ml.ScannedFolders, name) {
 		var dataPath string = filepath.Join(settings.Preferences.RoadmapsPath, name, "data.json")
@@ -90,14 +100,23 @@ func (ml *MapLoader) Load(name string) {
 		}
 
 	} else {
-		log.Printf(utils.WARNING_STR+"[MapLoader.Load] could not load roadmap \"%s\": does not exist or could not be scanned", name)
+		log.Printf(utils.WARNING_STR+"[MapLoader.Load] failed to load roadmap \"%s\": does not exist or could not be scanned", name)
 	}
 }
 
-// Save loaded Roadmap into Settings.RoadmapsPath/{name}/data.json
+// Save writes the loaded Roadmap data to a JSON file located under
+//
+//	{Settings.Preferences.RoadmapsPath}/{MapLoader.Content.Title}/data.json
+//
+// Behavior:
+//   - If the file does not exist, Save attempts to create it (including parent folders)
+//   - If every writing attempts fail, the function exits
+//   - If writing is successful but JSON encoding fails, nothing happens and user data remains untouched
+//   - On success, an info log is emitted
 func (ml *MapLoader) Save() {
 	var err error
 
+	// Path where the JSON file is located
 	var dataPath string = filepath.Join(settings.Preferences.RoadmapsPath, ml.Content.Title, "data.json")
 
 	roadmapFile, err := os.Open(dataPath)
@@ -106,10 +125,10 @@ func (ml *MapLoader) Save() {
 
 		err = nil
 
-		// tries to create a new file
+		// Tries to create a new file
 		log.Printf(utils.INFO_STR+"[MapLoader.Save] creating %s", dataPath)
 		roadmapFile, err = os.Create(dataPath)
-		if err != nil {
+		if err != nil { // Occurs if user does not have required permissions to modify its environment
 			log.Fatalf(utils.FATAL_STR + "[MapLoader.Save] %v")
 		}
 	}
@@ -121,10 +140,10 @@ func (ml *MapLoader) Save() {
 	if err != nil {
 		log.Printf(utils.WARNING_STR+"[MapLoader.Save] %v", err)
 
-		// no defaulting for user data (no overwrite)
+		// Will never default user data (no overwrite). Unlike {Settings}
 
-		log.Printf(utils.WARNING_STR+"[MapLoader.Save] could not save Roadmap into \"%s\"", dataPath)
+		log.Printf(utils.WARNING_STR+"[MapLoader.Save] failed to save roadmap to \"%s\"", dataPath)
 	} else {
-		log.Printf(utils.INFO_STR+"[MapLoader.Save] saved Roadmap into \"%s\"", dataPath)
+		log.Printf(utils.INFO_STR+"[MapLoader.Save] successfully saved roadmap to \"%s\"", dataPath)
 	}
 }

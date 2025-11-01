@@ -1,3 +1,4 @@
+// roadmaps is an internal package containing all the tools to build a project roadmap
 package roadmaps
 
 import (
@@ -40,7 +41,7 @@ func NewSiteFromMap(m Map) Site {
 // Slice of Site type
 type SiteSlice []Site
 
-// Insert s at its right index in ss
+// Insert a Site {s} at its right index in the SiteSlice {ss}
 //
 // If it replaces another Site, all Site.Id values from ss[s.Id+1:] are incremented by 1 (Site.Id++)
 func (ss *SiteSlice) Insert(s Site) {
@@ -58,6 +59,7 @@ func (ss *SiteSlice) Insert(s Site) {
 
 }
 
+// Remove deletes a Site {s} from the SiteSlice {ss} and adjusts all Site.Id
 func (ss *SiteSlice) Remove(s Site) {
 	var l uint = uint(len(*ss))
 

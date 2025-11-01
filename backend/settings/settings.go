@@ -1,3 +1,4 @@
+// settings is an internal package containing all the logic needed to handle user preferences
 package settings
 
 import (
@@ -9,15 +10,15 @@ import (
 	"github.com/creasty/defaults"
 )
 
-const settingsPath string = "data/settings/settings.json" // default settings path
+const settingsPath string = "data/settings/settings.json" // Default path where the external settings file is located
 
-var Preferences Settings // Global var storing the value of user's settings during runtime
+var Preferences Settings // Global variable storing the value of user's settings during runtime
 
 // Struct containing user's settings
 //
 // Why using `github.com/creasty/defaults` only there you could tell me: because this is an extensive struct (new fields will be added frequently) but the other struct are pretty much hardcoded so I will optimize those myself
 type Settings struct {
-	// Stores the path of the folder where each roadmap folder are located
+	// Path of the folder where each individual roadmap folder are located
 	RoadmapsPath string `json:"roadmapsPath" default:"data/roadmaps"`
 }
 

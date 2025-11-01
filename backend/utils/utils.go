@@ -1,3 +1,4 @@
+// utils is an internal package containing all the helpful utility tools of the project
 package utils
 
 import (
@@ -16,6 +17,7 @@ var WARNING_STR string = color.New(color.FgYellow).Sprint("WARNING") + " "
 // FATAL in red format. For fatal errors
 var FATAL_STR string = color.New(color.FgRed).Sprint("FATAL") + " "
 
+// GetFolders returns each name of directories inside its parent folder {path}
 func GetFolders(path string) []string {
 	entries, err := os.ReadDir(path)
 	if err != nil {
@@ -23,6 +25,7 @@ func GetFolders(path string) []string {
 	}
 
 	var folders []string
+
 	for _, entry := range entries {
 		if entry.IsDir() {
 			folders = append(folders, entry.Name())
