@@ -6,6 +6,7 @@ import (
 	"go-by-the-roads/backend/app"
 	"go-by-the-roads/backend/roadmaps"
 	"go-by-the-roads/backend/settings"
+	"go-by-the-roads/backend/utils"
 	"log"
 
 	"github.com/wailsapp/wails/v2"
@@ -17,12 +18,13 @@ import (
 var assets embed.FS
 
 func init() {
-	settings.Preferences.Load() // will create settings.json on first launch
+	settings.Preferences.Load() // Will create settings.json on first launch if inexistant
 	roadmaps.RoadmapLoader.Scan()
+	roadmaps.RoadmapLoader.Load(roadmaps.RoadmapLoader.ScannedFolders[0]) // to delete
 }
 
 func main() {
-	const testingMode bool = true
+	const testingMode bool = false
 	if !testingMode {
 		// Create an instance of the app structure
 		app := app.NewApp()
@@ -43,13 +45,22 @@ func main() {
 		})
 
 		if err != nil {
-			log.Println("Error:", err.Error())
+			log.Println(utils.FATAL_STR+"[main] error:", err.Error())
 		}
 	} else {
+		log.Println(utils.INFO_STR + "[main] testingMode enabled")
+
 		fmt.Printf("%v\n", settings.Preferences.RoadmapsPath)
-		roadmaps.RoadmapLoader.Load(roadmaps.RoadmapLoader.ScannedFolders[0])
+		if len(roadmaps.RoadmapLoader.ScannedFolders) != 0 {
+			roadmaps.RoadmapLoader.Load(roadmaps.RoadmapLoader.ScannedFolders[0])
+		}
 		fmt.Printf("%v\n", roadmaps.RoadmapLoader.Content)
 	}
 }
 
-// style field recovery
+// Docstring rework
+
+// a default style setting that applies to new roadmaps
+// individual style settings for each roadmaps
+
+// Purge branch or idk
