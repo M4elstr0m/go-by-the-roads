@@ -47,7 +47,7 @@ function App() {
             <div id="result" className="result">{resultText}</div>
             <div id="input" className="input-box">
                 <input id="name" className="input" onChange={updateName} autoComplete="off" name="input" type="text" />
-                <button className="btn" onClick={greet}>Greet</button>
+                <button className="btn shadow-md" onClick={greet}>Greet</button>
             </div>
             <SiteCard site={site}></SiteCard>
         </div>

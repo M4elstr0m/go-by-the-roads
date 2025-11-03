@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.ok {
+    width: fit-content;
+}

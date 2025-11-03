@@ -8,9 +8,9 @@ type SiteCardProps = {
 
 const SiteCard: React.FC<SiteCardProps> = ({ site }) => {
     return (
-        <div className="p-4 rounded-2xl shadow-md bg-white">
-            <h2 className="text-lg font-semibold">Site Card</h2>
-            <p className="text-gray-600">Title: {site.title}</p>
+        <div className="ok p-4 rounded-2xl shadow-md bg-purple-400">
+            <h2 className="text-lg font-semibold">{site.title}</h2>
+            <p className="text-gray-600">{site.desc}</p>
         </div>
     );
 };
