@@ -26,7 +26,7 @@ var RoadmapLoader MapLoader // Global variable storing the current roadmap
 
 // Scan searches for every available roadmaps currently located under {Settings.Preferences.RoadmapsPath}
 //
-// Ignores invalid entries
+// Ignores invalid entries (those without data.json)
 func (ml *MapLoader) Scan() []string {
 	var oldScannedFolders []string = ml.ScannedFolders
 	ml.ScannedFolders = []string{}
