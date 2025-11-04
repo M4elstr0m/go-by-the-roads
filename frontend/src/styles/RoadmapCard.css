@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 .roadmap-card {
+    @apply p-4 rounded-full shadow-md bg-blue-400;
     width: fit-content;
     cursor: pointer;
+}
+
+.roadmap-card h1 {
+    @apply text-lg font-semibold;
 }

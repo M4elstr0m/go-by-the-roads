@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
 .site-card {
+    @apply relative p-4 rounded-2xl shadow-md bg-purple-400 transition-all duration-300 hover:shadow-lg hover:bg-purple-500;
     width: fit-content;
+}
+
+.site-card h1 {
+    @apply text-lg font-semibold;
+}
+
+.site-card p {
+    @apply text-gray-600;
+}
+
+.site-card .hover-content {
+    @apply absolute inset-0 flex items-center justify-center bg-purple-800 text-white text-sm p-4 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300;
 }

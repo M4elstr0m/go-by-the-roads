@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+#home {
+    text-align: center;
+}
+
 #logo {
     display: block;
     width: 10%;

@@ -11,11 +11,11 @@ const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="roadmap-card p-4 rounded-full shadow-md bg-blue-400" onClick={() => {
+        <div className="roadmap-card" onClick={() => {
             SelectRoadmap(roadmap);
             navigateAndLog(navigate, "/roadmap");
         }}>
-            <h1 className="text-lg font-semibold">{roadmap}</h1>
+            <h1>{roadmap}</h1>
         </div>
     );
 };

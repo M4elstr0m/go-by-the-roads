@@ -14,7 +14,7 @@ function Home() {
         return <LoadingScreen />;
     } else {
         return (
-            <div id="app">
+            <div id="home">
                 <img src={logo} id="logo" alt="logo" />
 
                 <div className=''>
