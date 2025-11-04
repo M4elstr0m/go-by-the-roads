@@ -1,19 +1,18 @@
 import LoadingScreen from "@/components/LoadingScreen";
 import SiteCard from "@/components/SiteCard";
 import { fetchRoadmapAttributes } from "@/hooks/fetchRoadmapAttributes";
-import { navigateAndLog } from "@/utils/logNavigate";
-import { useNavigate } from "react-router-dom";
+import NavigationWidget from '@/components/NavigationWidget';
+import '@/styles/Roadmap.css';
 
 function Roadmap() {
-    const navigate = useNavigate();
     const { RoadmapTitle, RoadmapSites, loading } = fetchRoadmapAttributes();
 
     if (loading) {
         return <LoadingScreen />;
     } else {
         return (
-            <div>
-                <h1>{RoadmapTitle}</h1>
+            <div id="roadmap">
+                <h1 className="title">{RoadmapTitle}</h1>
                 {
                     RoadmapSites.map((site) => (
                         <div>
@@ -22,7 +21,7 @@ function Roadmap() {
                         </div>
                     ))
                 }
-                <button onClick={() => { navigateAndLog(navigate, "/") }}>HOME</button>
+                <NavigationWidget route="/" text="Home"></NavigationWidget>
             </div>
         )
     }

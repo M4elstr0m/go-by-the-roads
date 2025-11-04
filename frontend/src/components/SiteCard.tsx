@@ -7,15 +7,19 @@ type SiteCardProps = {
 
 const SiteCard: React.FC<SiteCardProps> = ({ site }) => {
     return (
-        <div className="site-card group">
-            <h1>{site.title}</h1>
-            <p>{site.desc}</p>
+        <article className="site-card group">
+            <header className="mb-2">
+                <h1 className="site-title">{site.title}</h1>
+            </header>
+            <p className="site-desc">{site.desc}</p>
 
-            {/* Hidden content that shows on hover */}
-            <div className="hover-content bg-opacity-90">
-                {site.content}
+            {/* Hover reveal */}
+            <div className="hover-content">
+                <div className="hover-inner">
+                    {site.content}
+                </div>
             </div>
-        </div>
+        </article>
     );
 };
 

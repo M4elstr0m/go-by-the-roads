@@ -1,5 +1,4 @@
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
-import '@/styles/App.css';
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from '@/pages/Home';
 import About from '@/pages/About';
 import Roadmap from '@/pages/Roadmap';

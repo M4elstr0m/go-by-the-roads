@@ -2,12 +2,10 @@ import logo from '@/assets/images/logo-universal.png';
 import '@/styles/Home.css';
 import LoadingScreen from '@/components/LoadingScreen';
 import { fetchAvailableRoadmaps } from '@/hooks/fetchAvailableRoadmaps';
-import { useNavigate } from 'react-router-dom';
-import { navigateAndLog } from "@/utils/logNavigate";
+import NavigationWidget from '@/components/NavigationWidget';
 import RoadmapCard from '@/components/RoadmapCard';
 
 function Home() {
-    const navigate = useNavigate();
     const { AvailableRoadmaps, loading } = fetchAvailableRoadmaps();
 
     if (loading) {
@@ -24,8 +22,7 @@ function Home() {
                 </div>
 
                 <br></br>
-                <button onClick={() => { navigateAndLog(navigate, "/about") }}>About
-                </button>
+                <NavigationWidget route="/about" text="About"></NavigationWidget>
             </div >
         )
     }

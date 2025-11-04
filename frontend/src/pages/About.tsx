@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom"
-import { navigateAndLog } from "@/utils/logNavigate";
+import NavigationWidget from "@/components/NavigationWidget";
 
 function About() {
-    const navigate = useNavigate();
     return (
-        <button onClick={() => { navigateAndLog(navigate, "/") }}>HOME</button>
+        <NavigationWidget route="/" text="Home"></NavigationWidget>
     )
 }
 
