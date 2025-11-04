@@ -29,8 +29,6 @@ function Home() {
                 <br></br>
                 <button onClick={() => { navigateAndLog(navigate, "/about") }}>About
                 </button>
-
-                {/* <SiteCard site={site}></SiteCard> */}
             </div >
         )
     }
