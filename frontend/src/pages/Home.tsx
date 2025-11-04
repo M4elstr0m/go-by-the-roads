@@ -1,5 +1,5 @@
 import logo from '@/assets/images/logo-universal.png';
-import '@/styles/Home.css';
+import '@/styles/pages/Home.css';
 import LoadingScreen from '@/components/LoadingScreen';
 import { fetchAvailableRoadmaps } from '@/hooks/fetchAvailableRoadmaps';
 import NavigationWidget from '@/components/NavigationWidget';

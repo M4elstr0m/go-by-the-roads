@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { navigateAndLog } from "@/utils/logNavigate";
-import "@/styles/NavigationWidget.css"
+import "@/styles/components/NavigationWidget.css"
 
 type NavigationWidgetProps = {
     route: string;

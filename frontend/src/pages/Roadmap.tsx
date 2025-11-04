@@ -2,7 +2,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import SiteCard from "@/components/SiteCard";
 import { fetchRoadmapAttributes } from "@/hooks/fetchRoadmapAttributes";
 import NavigationWidget from '@/components/NavigationWidget';
-import '@/styles/Roadmap.css';
+import '@/styles/pages/Roadmap.css';
 
 function Roadmap() {
     const { RoadmapTitle, RoadmapSites, loading } = fetchRoadmapAttributes();

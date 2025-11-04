@@ -1,4 +1,4 @@
-import '@/styles/LoadingScreen.css';
+import '@/styles/components/LoadingScreen.css';
 
 const LoadingScreen: React.FC = () => {
     return (

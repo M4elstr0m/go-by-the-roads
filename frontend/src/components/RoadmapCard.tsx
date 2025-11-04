@@ -1,4 +1,4 @@
-import '@/styles/RoadmapCard.css';
+import '@/styles/components/RoadmapCard.css';
 import { useNavigate } from "react-router-dom";
 import { SelectRoadmap } from "@/../wailsjs/go/app/App";
 import { navigateAndLog } from "@/utils/logNavigate";

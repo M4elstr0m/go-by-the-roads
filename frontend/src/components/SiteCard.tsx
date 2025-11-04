@@ -1,4 +1,4 @@
-import '@/styles/SiteCard.css';
+import '@/styles/components/SiteCard.css';
 import type { roadmaps } from "@/../wailsjs/go/models";
 
 type SiteCardProps = {
