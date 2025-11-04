@@ -2,6 +2,8 @@ package app
 
 import (
 	"go-by-the-roads/backend/roadmaps"
+	"go-by-the-roads/backend/utils"
+	"log"
 )
 
 func (a *App) GetAvailableRoadmaps() []string {
@@ -22,4 +24,8 @@ func (a *App) GetRoadmapSites() roadmaps.SiteSlice {
 
 func (a *App) GetMapLoader() roadmaps.MapLoader {
 	return roadmaps.RoadmapLoader
+}
+
+func (a *App) LogNavigation(s string) {
+	log.Printf(utils.INFO_STR+"[NAVIGATION] navigating to \"%s\"", s)
 }

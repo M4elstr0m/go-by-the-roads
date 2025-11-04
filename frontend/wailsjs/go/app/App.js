@@ -18,6 +18,10 @@ export function GetRoadmapTitle() {
   return window['go']['app']['App']['GetRoadmapTitle']();
 }
 
+export function LogNavigation(arg1) {
+  return window['go']['app']['App']['LogNavigation'](arg1);
+}
+
 export function SelectRoadmap(arg1) {
   return window['go']['app']['App']['SelectRoadmap'](arg1);
 }

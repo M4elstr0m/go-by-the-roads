@@ -1,29 +1,19 @@
-import { useState, useEffect } from 'react';
-import logo from './assets/images/logo-universal.png';
-import './styles/App.css';
-import { GetAvailableRoadmaps, SelectRoadmap } from "../wailsjs/go/app/App";
-import type { roadmaps } from "../wailsjs/go/models";
-import SiteCard from './components/SiteCard';
-import LoadingScreen from './components/LoadingScreen';
-import { fetchAvailableRoadmaps } from './hooks/fetchAvailableRoadmaps';
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import '@/styles/App.css';
+import Home from '@/pages/Home';
+import About from '@/pages/About';
+import Roadmap from '@/pages/Roadmap';
 
 function App() {
-    const { AvailableRoadmaps, loading } = fetchAvailableRoadmaps();
-
-    if (loading) {
-        return <LoadingScreen />;
-    } else {
-        return (
-            <div id="App">
-                {AvailableRoadmaps.map((roadmap) => (
-                    <button onClick={() => SelectRoadmap(roadmap)}>{roadmap}</button>
-                ))}
-
-                <img src={logo} id="logo" alt="logo" />
-                <SiteCard site={site}></SiteCard>
-            </div>
-        )
-    }
+    return (
+        <HashRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/roadmap" element={<Roadmap />} />
+            </Routes>
+        </HashRouter>
+    );
 }
 
 export default App

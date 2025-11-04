@@ -23,6 +23,10 @@ body {
         url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
 }
 
+button {
+    background-color: rgb(71, 71, 71);
+}
+
 #app {
     height: 100vh;
     text-align: center;

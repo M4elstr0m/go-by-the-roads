@@ -10,4 +10,6 @@ export function GetRoadmapSites():Promise<roadmaps.SiteSlice>;
 
 export function GetRoadmapTitle():Promise<string>;
 
+export function LogNavigation(arg1:string):Promise<void>;
+
 export function SelectRoadmap(arg1:string):Promise<void>;

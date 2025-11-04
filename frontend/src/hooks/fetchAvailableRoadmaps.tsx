@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetAvailableRoadmaps } from "wailsjs/go/app/App";
+import { GetAvailableRoadmaps } from "../../wailsjs/go/app/App";
 
 export function fetchAvailableRoadmaps() {
     const [AvailableRoadmaps, setAvailableRoadmaps] = useState<string[]>([]);
