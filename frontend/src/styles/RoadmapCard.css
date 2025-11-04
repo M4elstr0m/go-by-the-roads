@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
-.site-card {
+.roadmap-card {
     width: fit-content;
+    cursor: pointer;
 }

@@ -1,10 +1,10 @@
 import logo from '@/assets/images/logo-universal.png';
-import '@/styles/App.css';
-import { SelectRoadmap } from "../../wailsjs/go/app/App";
+import '@/styles/Home.css';
 import LoadingScreen from '@/components/LoadingScreen';
 import { fetchAvailableRoadmaps } from '@/hooks/fetchAvailableRoadmaps';
 import { useNavigate } from 'react-router-dom';
 import { navigateAndLog } from "@/utils/logNavigate";
+import RoadmapCard from '@/components/RoadmapCard';
 
 function Home() {
     const navigate = useNavigate();
@@ -14,17 +14,14 @@ function Home() {
         return <LoadingScreen />;
     } else {
         return (
-            <div id="App">
+            <div id="app">
                 <img src={logo} id="logo" alt="logo" />
 
-                {AvailableRoadmaps.map((roadmap) => (
-                    <button onClick={() => {
-                        SelectRoadmap(roadmap);
-                        navigateAndLog(navigate, "/roadmap");
-                    }}>
-                        {roadmap}
-                    </button>
-                ))}
+                <div className=''>
+                    {AvailableRoadmaps.map((roadmap) => (
+                        <RoadmapCard roadmap={roadmap}></RoadmapCard>
+                    ))}
+                </div>
 
                 <br></br>
                 <button onClick={() => { navigateAndLog(navigate, "/about") }}>About

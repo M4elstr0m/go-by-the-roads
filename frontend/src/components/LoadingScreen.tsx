@@ -1,8 +1,8 @@
-import '../styles/LoadingScreen.css';
+import '@/styles/LoadingScreen.css';
 
 const LoadingScreen: React.FC = () => {
     return (
-        <div className="p-4 rounded-2xl shadow-md bg-white">
+        <div className="p-4 shadow-md">
             <h1 className="text-lg font-semibold">Loading...</h1>
         </div>
     );

@@ -5,6 +5,7 @@ html {
     text-align: center;
     color: white;
     margin: 2vh;
+    cursor: default;
 }
 
 body {
@@ -28,6 +29,5 @@ button {
 }
 
 #app {
-    height: 100vh;
     text-align: center;
 }
