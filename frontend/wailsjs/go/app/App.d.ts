@@ -4,14 +4,10 @@ import {roadmaps} from '../models';
 
 export function GetAvailableRoadmaps():Promise<Array<string>>;
 
-export function GetFirstSite(arg1:roadmaps.MapLoader):Promise<roadmaps.Site>;
-
 export function GetMapLoader():Promise<roadmaps.MapLoader>;
 
 export function GetRoadmapSites():Promise<roadmaps.SiteSlice>;
 
 export function GetRoadmapTitle():Promise<string>;
-
-export function Greet(arg1:string):Promise<string>;
 
 export function SelectRoadmap(arg1:string):Promise<void>;

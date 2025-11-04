@@ -6,10 +6,6 @@ export function GetAvailableRoadmaps() {
   return window['go']['app']['App']['GetAvailableRoadmaps']();
 }
 
-export function GetFirstSite(arg1) {
-  return window['go']['app']['App']['GetFirstSite'](arg1);
-}
-
 export function GetMapLoader() {
   return window['go']['app']['App']['GetMapLoader']();
 }
@@ -20,10 +16,6 @@ export function GetRoadmapSites() {
 
 export function GetRoadmapTitle() {
   return window['go']['app']['App']['GetRoadmapTitle']();
-}
-
-export function Greet(arg1) {
-  return window['go']['app']['App']['Greet'](arg1);
 }
 
 export function SelectRoadmap(arg1) {
