@@ -27,3 +27,7 @@ body {
 button {
     background-color: rgb(71, 71, 71);
 }
+
+a {
+    @apply cursor-pointer;
+}

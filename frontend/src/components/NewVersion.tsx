@@ -19,7 +19,7 @@ const NewVersion: React.FC<NewVersionProps> = ({ SubmitAction, CurrentTag, Lates
                 <p className="text-gray-700 mb-4">
                     {CurrentTag} - {LatestReleaseTag}<br></br>
                     There are new features and improvements. Check them out!<br></br>
-                    <a className="cursor-pointer" onClick={() => { OpenLink(RepoLink) }}>GitHub Repository</a><br></br>
+                    <a className="github-link" onClick={() => { OpenLink(RepoLink) }}>GitHub Repository</a><br></br>
                     By {RepoOwner}<br></br>
                 </p>
                 <button
