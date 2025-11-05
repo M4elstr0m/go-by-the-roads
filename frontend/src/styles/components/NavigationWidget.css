@@ -6,7 +6,7 @@
            shadow-md text-white font-medium
            transition-all duration-300 ease-out
            hover:from-green-500 hover:to-green-600 hover:shadow-lg hover:scale-[1.03]
-           cursor-pointer select-none text-center;
+           cursor-pointer select-none text-center uppercase;
     /* width: fit-content; */
     width: 10vw;
     }

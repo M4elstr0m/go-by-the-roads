@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetRoadmapTitle, GetRoadmapSites } from "../../wailsjs/go/app/App";
+import { GetRoadmapTitle, GetRoadmapSites } from "@/../wailsjs/go/app/App";
 import { roadmaps } from "wailsjs/go/models";
 
 

@@ -12,4 +12,8 @@ export function GetRoadmapTitle():Promise<string>;
 
 export function LogNavigation(arg1:string):Promise<void>;
 
+export function OpenLink(arg1:string):Promise<void>;
+
 export function SelectRoadmap(arg1:string):Promise<void>;
+
+export function Version():Promise<Array<any>>;

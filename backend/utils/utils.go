@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/fatih/color"
+	"github.com/pkg/browser"
 )
 
 // INFO in green format. For harmless informations
@@ -33,4 +34,11 @@ func GetFolders(path string) []string {
 	}
 
 	return folders
+}
+
+func OpenURL(s string) {
+	err := browser.OpenURL(s)
+	if err != nil {
+		log.Printf(WARNING_STR + "[OpenURL] failed to open URL: %v")
+	}
 }

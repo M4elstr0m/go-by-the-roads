@@ -3,6 +3,7 @@ package app
 import (
 	"go-by-the-roads/backend/roadmaps"
 	"go-by-the-roads/backend/utils"
+	"go-by-the-roads/backend/version"
 	"log"
 )
 
@@ -28,4 +29,12 @@ func (a *App) GetMapLoader() roadmaps.MapLoader {
 
 func (a *App) LogNavigation(s string) {
 	log.Printf(utils.INFO_STR+"[NAVIGATION] navigating to \"%s\"", s)
+}
+
+func (a *App) Version() []interface{} {
+	return []interface{}{version.IsLatestVersion(), version.CurrentTag, version.GetLatestReleaseTag(), version.RepoLink, version.RepoOwner}
+}
+
+func (a *App) OpenLink(url string) {
+	utils.OpenURL(url)
 }
