@@ -1,16 +1,30 @@
 @import "tailwindcss";
 
+/*
+2D3142 : Gunmetal
+BFC0C0 : Silver
+FFFFFF : White
+EF8354 : Coral
+4F5D75 : Payne's gray
+*/
+
+:root {
+    --palette_GunMetal: #2D3142;
+    --palette_Silver: #BFC0C0;
+    --palette_White: #FFFFFF;
+    --palette_Coral: #EF8354;
+    --palette_PaynesGray: #4F5D75;
+}
+
 html {
-    background-color: rgb(28, 28, 28);
+    @apply bg-(--palette_GunMetal) text-(--palette_White);
     text-align: center;
-    color: white;
     margin: 2vh;
     cursor: default;
 }
 
 body {
     margin: 0;
-    color: white;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif;
@@ -25,9 +39,58 @@ body {
 }
 
 button {
-    background-color: rgb(71, 71, 71);
+  @apply transition-transform hover:scale-103 active:scale-97;
 }
 
 a {
-    @apply cursor-pointer;
+  @apply cursor-pointer inline-block text-transparent transition-transform hover:scale-103 active:scale-97;
+  position: relative;
+  z-index: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    90deg,
+    var(--palette_GunMetal),
+    var(--palette_Coral),
+    var(--palette_GunMetal)
+  );
+  background-size: 200% 100%;
+  animation: slide-bg 5s linear infinite;
+
+  /* text transparency setup */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+
+a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px; 
+  background: inherit;
+  background-clip: border-box;
+
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+a:hover::before {
+  opacity: 1;
+}
+
+@keyframes slide-bg {
+  0%   { background-position: -50% 0%; }
+  50%  { background-position: 150% 0%; }
+  100% { background-position: -50% 0%; }
+}
+
+

@@ -13,20 +13,23 @@ type NewVersionProps = {
 const NewVersion: React.FC<NewVersionProps> = ({ SubmitAction, CurrentTag, LatestReleaseTag, RepoLink, RepoOwner }) => {
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-white rounded-2xl shadow-lg p-6 w-80 text-center">
-                <h2 className="text-xl font-semibold mb-3">New Version Available!</h2>
-                <p className="text-gray-700 mb-4">
-                    {CurrentTag} - {LatestReleaseTag}<br></br>
-                    There are new features and improvements. Check them out!<br></br>
-                    <a className="github-link" onClick={() => { OpenLink(RepoLink) }}>GitHub Repository</a><br></br>
-                    By {RepoOwner}<br></br>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
+            <div className="bg-(--palette_Silver) rounded-2xl shadow-lg p-6 w-120 text-center">
+                <h1 className="text-(--palette_GunMetal) text-3xl font-extrabold mb-3">New Version Available!</h1>
+                <p className="text-(--palette_GunMetal) mb-4">
+                    {CurrentTag} - {LatestReleaseTag}
+                    <br></br>
+                    There are new features and improvements.
+                    <br></br>
+                    Check them out!
+                    <br></br>
+                    <a className="github-link font-bold text-lg" style={{ margin: "10px" }} onClick={() => { OpenLink(RepoLink) }}>GitHub Repository</a>
+                    <br></br>
+                    by {RepoOwner}
+                    <br></br>
                 </p>
-                <button
-                    onClick={SubmitAction}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-                >
-                    OK
+                <button onClick={SubmitAction} className="bg-(--palette_PaynesGray) text-(--palette_White) px-4 py-2 rounded-lg hover:bg-(--palette_GunMetal)">
+                    MAYBE LATER
                 </button>
             </div>
         </div>

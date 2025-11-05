@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
 #roadmap .title {
-    @apply font-extrabold tracking-tight text-white drop-shadow-md uppercase;
     font-size: 54px;
 }
