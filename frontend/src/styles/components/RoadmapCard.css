@@ -6,9 +6,8 @@
            shadow-md text-(--palette_White) font-medium
            transition-all duration-300 ease-out
            hover:from-red-500 hover:to-red-600 hover:shadow-lg
-           select-none text-center hover:scale-103 active:scale-97 active:shadow-inner;
-    /* width: fit-content; */
-    width: 20vw;
+           select-none text-center hover:scale-103 active:scale-97 active:shadow-inner
+           w-[50vw] md:w-[20vw] lg:w-[20vw];
 }
 
 /* Roadmap title */

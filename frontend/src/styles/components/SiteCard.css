@@ -5,8 +5,8 @@
            shadow-md bg-linear-to-br from-red-400 to-red-500
            transition-all duration-300 ease-out
            hover:shadow-2xl
-           text-gray-900 hover:scale-105 active:scale-99;
-    width: 20vw;
+           text-gray-900 hover:scale-105 active:scale-99
+           w-[80vw] md:w-[40vw] lg:w-[40vw]; /*This line allows responsive width*/
     margin: 7px;
 }
 
