@@ -26,6 +26,10 @@ export function OpenLink(arg1) {
   return window['go']['app']['App']['OpenLink'](arg1);
 }
 
+export function OpenRepoLink() {
+  return window['go']['app']['App']['OpenRepoLink']();
+}
+
 export function SelectRoadmap(arg1) {
   return window['go']['app']['App']['SelectRoadmap'](arg1);
 }

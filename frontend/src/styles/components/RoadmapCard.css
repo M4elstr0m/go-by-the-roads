@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .roadmap-card {
-    @apply relative items-center justify-between gap-3
+    @apply relative items-center justify-between
            px-6 py-4 rounded-2xl bg-linear-to-r from-red-400 to-red-500
            shadow-md text-(--palette_White) font-medium
            transition-all duration-300 ease-out
@@ -13,7 +13,7 @@
 
 /* Roadmap title */
 .roadmap-card h1 {
-    @apply text-lg font-semibold tracking-tight truncate;
+    @apply text-lg font-semibold tracking-tight;
 }
 
 .roadmap-card:focus-visible {

@@ -22,6 +22,7 @@ html {
     text-align: center;
     margin: 2vh;
     cursor: default;
+    overflow: hidden;
 }
 
 body {
@@ -94,4 +95,20 @@ a:hover::before {
   100% { background-position: -50% 0%; }
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
 
+::-webkit-scrollbar-thumb {
+    @apply transition-all duration-300;
+  background-color: var(--palette_White);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply transition-all duration-300;
+  background-color: var(--palette_Silver);
+  border: 0;
+}

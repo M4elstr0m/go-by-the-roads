@@ -4,6 +4,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 import { fetchAvailableRoadmaps } from '@/hooks/fetchAvailableRoadmaps';
 import NavigationWidget from '@/components/NavigationWidget';
 import RoadmapCard from '@/components/RoadmapCard';
+import { OpenRepoLink } from '@/../wailsjs/go/app/App';
 
 function Home() {
     const { AvailableRoadmaps, loading } = fetchAvailableRoadmaps();
@@ -13,9 +14,14 @@ function Home() {
     } else {
         return (
             <div id="home">
-                <img src={logo} id="logo" alt="logo" />
+                <img className='hover:scale-105 transition-all' src={logo} id="logo" alt="logo" title='Link to repository' onClick={() => { OpenRepoLink() }} />
 
-                <div className=''>
+                <div className="grid justify-center overflow-y-auto overflow-x-hidden" style={{
+                    gridTemplateColumns: "repeat(auto-fit, minmax(200px, max-content))",
+                    columnGap: "15px", // horizontal gap
+                    rowGap: "15px",    // vertical gap
+                    maxHeight: "60vh",
+                }}>
                     {AvailableRoadmaps.map((roadmap) => (
                         <RoadmapCard roadmap={roadmap}></RoadmapCard>
                     ))}

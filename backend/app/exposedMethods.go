@@ -42,3 +42,7 @@ func (a *App) Version() []interface{} {
 func (a *App) OpenLink(url string) {
 	utils.OpenURL(url)
 }
+
+func (a *App) OpenRepoLink() {
+	utils.OpenURL(version.RepoLink)
+}
