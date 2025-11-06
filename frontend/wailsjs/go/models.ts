@@ -1,6 +1,7 @@
 export namespace roadmaps {
 	
 	export class Site {
+	    Id: number;
 	    title: string;
 	    desc: string;
 	    content: string;
@@ -12,6 +13,7 @@ export namespace roadmaps {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.Id = source["Id"];
 	        this.title = source["title"];
 	        this.desc = source["desc"];
 	        this.content = source["content"];
@@ -51,7 +53,6 @@ export namespace roadmaps {
 		}
 	}
 	export class MapLoader {
-	    ScannedFolders: string[];
 	    data: Map;
 	
 	    static createFrom(source: any = {}) {
@@ -60,7 +61,6 @@ export namespace roadmaps {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.ScannedFolders = source["ScannedFolders"];
 	        this.data = this.convertValues(source["data"], Map);
 	    }
 	

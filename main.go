@@ -20,7 +20,7 @@ var assets embed.FS
 func init() {
 	settings.Preferences.Load() // Will create settings.json on first launch if inexistant
 	roadmaps.RoadmapLoader.Scan()
-	roadmaps.RoadmapLoader.Load(roadmaps.RoadmapLoader.ScannedFolders[0]) // to delete
+	roadmaps.RoadmapLoader.Save()
 }
 
 func main() {

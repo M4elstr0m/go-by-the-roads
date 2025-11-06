@@ -30,8 +30,20 @@ export function OpenRepoLink() {
   return window['go']['app']['App']['OpenRepoLink']();
 }
 
+export function SaveRoadmap() {
+  return window['go']['app']['App']['SaveRoadmap']();
+}
+
+export function SaveSettings() {
+  return window['go']['app']['App']['SaveSettings']();
+}
+
 export function SelectRoadmap(arg1) {
   return window['go']['app']['App']['SelectRoadmap'](arg1);
+}
+
+export function SwitchCompletedState(arg1) {
+  return window['go']['app']['App']['SwitchCompletedState'](arg1);
 }
 
 export function Version() {

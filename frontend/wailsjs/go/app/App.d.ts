@@ -16,6 +16,12 @@ export function OpenLink(arg1:string):Promise<void>;
 
 export function OpenRepoLink():Promise<void>;
 
+export function SaveRoadmap():Promise<void>;
+
+export function SaveSettings():Promise<void>;
+
 export function SelectRoadmap(arg1:string):Promise<void>;
+
+export function SwitchCompletedState(arg1:roadmaps.Site):Promise<void>;
 
 export function Version():Promise<Array<any>>;

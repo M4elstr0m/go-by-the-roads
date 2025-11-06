@@ -67,7 +67,7 @@ func (stgs *Settings) Load() {
 func (stgs *Settings) Save() {
 	var err error
 
-	settingsFile, err := os.Open(settingsPath)
+	settingsFile, err := os.OpenFile(settingsPath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Printf(utils.WARNING_STR+"[Settings.Save] %v", err)
 

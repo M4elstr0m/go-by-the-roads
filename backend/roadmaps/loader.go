@@ -14,7 +14,7 @@ import (
 // MapLoader is a type handling external data input and output
 type MapLoader struct {
 	// List of folders located under {Settings.Preferences.RoadmapsPath}
-	ScannedFolders []string
+	ScannedFolders []string `json:"-"`
 
 	// Content of a roadmap
 	//
@@ -26,7 +26,7 @@ var RoadmapLoader MapLoader // Global variable storing the current roadmap
 
 // Scan searches for every available roadmaps currently located under {Settings.Preferences.RoadmapsPath}
 //
-// Ignores invalid entries (those without data.json)
+// Ignores invalId entries (those without data.json)
 func (ml *MapLoader) Scan() []string {
 	var oldScannedFolders []string = ml.ScannedFolders
 	ml.ScannedFolders = []string{}
@@ -88,13 +88,10 @@ func (ml *MapLoader) Load(name string) {
 			log.Printf(utils.WARNING_STR+"[MapLoader.Load] could not load roadmap: %v", err)
 		} else {
 			for i := range ml.Content.Elements {
-				ml.Content.Elements[i].id = uint(i)
+				ml.Content.Elements[i].Id = uint(i)
 			}
 
-			// format
-			if ml.Content.Title != name {
-				ml.Content.Title = name
-			}
+			ml.Content.Title = name
 
 			log.Printf(utils.INFO_STR + "[MapLoader.Load] loaded roadmap successfully")
 		}
@@ -119,7 +116,7 @@ func (ml *MapLoader) Save() {
 	// Path where the JSON file is located
 	var dataPath string = filepath.Join(settings.Preferences.RoadmapsPath, ml.Content.Title, "data.json")
 
-	roadmapFile, err := os.Open(dataPath)
+	roadmapFile, err := os.OpenFile(dataPath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Printf(utils.WARNING_STR+"[MapLoader.Save] %v", err)
 

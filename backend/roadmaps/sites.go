@@ -16,7 +16,7 @@ type Site struct {
 	// Each Id must be unique within a slice of Site
 	//
 	// The lower the Id is, the sooner the task should be completed
-	id uint
+	Id uint
 
 	Title       string `json:"title"`   // Title of a Site (will be written in bold)
 	Description string `json:"desc"`    // Short description of a Site (will be written in regular)
@@ -25,10 +25,15 @@ type Site struct {
 	Completed bool `json:"completed"` // Indicator of completion
 }
 
+// SwitchCompletedState turns Site.Completed into his logical opposite
+func (s *Site) SwitchCompletedState() {
+	s.Completed = !s.Completed
+}
+
 // Returns a new Site instance depending on a Map
 func NewSiteFromMap(m Map) Site {
 	return Site{
-		id: uint(len(m.Elements)),
+		Id: uint(len(m.Elements)),
 
 		Title:       "New Site",
 		Description: "",
@@ -47,14 +52,14 @@ type SiteSlice []Site
 func (ss *SiteSlice) Insert(s Site) {
 	var l uint = uint(len(*ss))
 
-	if s.id > l {
-		s.id = l
+	if s.Id > l {
+		s.Id = l
 	}
 
-	*ss = slices.Insert(*ss, int(s.id), s)
+	*ss = slices.Insert(*ss, int(s.Id), s)
 
-	for i := s.id + 1; i < l+1; i++ {
-		(*ss)[i].id++
+	for i := s.Id + 1; i < l+1; i++ {
+		(*ss)[i].Id++
 	}
 
 }
@@ -63,14 +68,14 @@ func (ss *SiteSlice) Insert(s Site) {
 func (ss *SiteSlice) Remove(s Site) {
 	var l uint = uint(len(*ss))
 
-	if s.id >= l {
-		log.Println(utils.WARNING_STR + "[SiteSlice.Remove] aborted: [s.id >= l]")
+	if s.Id >= l {
+		log.Println(utils.WARNING_STR + "[SiteSlice.Remove] aborted: [s.Id >= l]")
 		return
 	}
 
-	*ss = slices.Delete(*ss, int(s.id), int(s.id)+1)
+	*ss = slices.Delete(*ss, int(s.Id), int(s.Id)+1)
 
-	for i := s.id; i < l-1; i++ {
-		(*ss)[i].id--
+	for i := s.Id; i < l-1; i++ {
+		(*ss)[i].Id--
 	}
 }

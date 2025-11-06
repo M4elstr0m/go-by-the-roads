@@ -36,3 +36,25 @@
 .site-card:active {
     @apply shadow-lg;
 }
+
+.site-card-completed {
+    @apply relative overflow-hidden p-6 rounded-2xl 
+           shadow-md bg-linear-to-br from-gray-400 to-gray-500
+           transition-all duration-300 ease-out
+           hover:shadow-2xl
+           text-gray-900 hover:scale-105 active:scale-99
+           w-[80vw] md:w-[40vw] lg:w-[40vw]; /*This line allows responsive width*/
+    margin: 7px;
+}
+/* Hover layer */
+.hover-content-completed {
+    @apply absolute inset-0 flex items-center justify-center bg-linear-to-br
+         from-gray-500/70 to-gray-600/70 backdrop-blur-md text-white p-6
+           rounded-2xl opacity-0 translate-y-3
+           transition-all duration-300 ease-in-out
+           group-hover:opacity-100 group-hover:translate-y-0;
+}
+
+.site-desc-completed {
+    @apply text-sm text-gray-100 mt-1 leading-relaxed;
+}

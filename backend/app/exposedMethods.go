@@ -2,6 +2,7 @@ package app
 
 import (
 	"go-by-the-roads/backend/roadmaps"
+	"go-by-the-roads/backend/settings"
 	"go-by-the-roads/backend/utils"
 	"go-by-the-roads/backend/version"
 	"log"
@@ -45,4 +46,18 @@ func (a *App) OpenLink(url string) {
 
 func (a *App) OpenRepoLink() {
 	utils.OpenURL(version.RepoLink)
+}
+
+func (a *App) SwitchCompletedState(site roadmaps.Site) {
+	if site.Id < uint(len(roadmaps.RoadmapLoader.Content.Elements)) {
+		roadmaps.RoadmapLoader.Content.Elements[site.Id].SwitchCompletedState()
+	}
+}
+
+func (a *App) SaveRoadmap() {
+	roadmaps.RoadmapLoader.Save()
+}
+
+func (a *App) SaveSettings() {
+	settings.Preferences.Save()
 }
