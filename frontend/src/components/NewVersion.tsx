@@ -17,7 +17,9 @@ const NewVersion: React.FC<NewVersionProps> = ({ SubmitAction, CurrentTag, Lates
             <div className="bg-(--palette_Silver) rounded-2xl shadow-lg p-6 w-120 text-center">
                 <h1 className="text-(--palette_GunMetal) text-3xl font-extrabold mb-3">New Version Available!</h1>
                 <p className="text-(--palette_GunMetal) mb-4">
-                    {CurrentTag} - {LatestReleaseTag}
+                    <span className="font-bold">
+                        {CurrentTag} - {LatestReleaseTag}
+                    </span>
                     <br></br>
                     There are new features and improvements.
                     <br></br>

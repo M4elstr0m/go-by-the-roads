@@ -11,8 +11,9 @@ EF8354 : Coral
 :root {
     --palette_GunMetal: #2D3142;
     --palette_Silver: #BFC0C0;
+    --palette_Black: #0f0f0f;
     --palette_White: #FFFFFF;
-    --palette_Coral: #EF8354;
+    --palette_ImperialRed: #F05454;
     --palette_PaynesGray: #4F5D75;
 }
 
@@ -52,7 +53,7 @@ a {
   background: linear-gradient(
     90deg,
     var(--palette_GunMetal),
-    var(--palette_Coral),
+    var(--palette_ImperialRed),
     var(--palette_GunMetal)
   );
   background-size: 200% 100%;

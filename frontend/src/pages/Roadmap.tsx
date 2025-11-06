@@ -12,17 +12,19 @@ function Roadmap() {
     } else {
         return (
             <div id="roadmap">
-                <h1 className="title font-extrabold tracking-tight text-white drop-shadow-md uppercase">{RoadmapTitle}</h1>
+                <h1 className="title inline-block font-extrabold tracking-tight text-white drop-shadow-md uppercase hover:scale-110 transition-all duration-200">
+                    {RoadmapTitle}
+                </h1>
                 <div className="sites-list flex flex-col items-center">
                     {
                         RoadmapSites.map((site) => (
                             <div>
-                                <br></br>
                                 <SiteCard site={site}></SiteCard>
                             </div>
                         ))
                     }
                 </div>
+                <br></br>
                 <NavigationWidget route="/" text="Home"></NavigationWidget>
             </div>
         )

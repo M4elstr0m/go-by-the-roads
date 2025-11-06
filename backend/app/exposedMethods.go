@@ -32,7 +32,11 @@ func (a *App) LogNavigation(s string) {
 }
 
 func (a *App) Version() []interface{} {
-	return []interface{}{version.IsLatestVersion(), version.CurrentTag, version.GetLatestReleaseTag(), version.RepoLink, version.RepoOwner}
+	var latestReleaseTag string = version.GetLatestReleaseTag()
+	if latestReleaseTag == "" {
+		latestReleaseTag = "?"
+	}
+	return []interface{}{version.IsLatestVersion(), version.CurrentTag, latestReleaseTag, version.RepoLink, version.RepoOwner}
 }
 
 func (a *App) OpenLink(url string) {

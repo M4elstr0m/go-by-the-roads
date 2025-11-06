@@ -2,11 +2,12 @@
 
 .site-card {
     @apply relative overflow-hidden p-6 rounded-2xl 
-           shadow-md bg-linear-to-br from-purple-400 to-purple-500
+           shadow-md bg-linear-to-br from-red-400 to-red-500
            transition-all duration-300 ease-out
            hover:shadow-2xl
-           text-gray-900 hover:scale-103 active:scale-99;
+           text-gray-900 hover:scale-105 active:scale-99;
     width: 20vw;
+    margin: 7px;
 }
 
 .site-title {
@@ -14,13 +15,13 @@
 }
 
 .site-desc {
-    @apply text-sm text-purple-100 mt-1 leading-relaxed;
+    @apply text-sm text-red-100 mt-1 leading-relaxed;
 }
 
 /* Hover layer */
 .hover-content {
-    @apply absolute inset-0 flex items-center justify-center
-           bg-purple-900/70 backdrop-blur-md text-white p-6
+    @apply absolute inset-0 flex items-center justify-center bg-linear-to-br
+         from-red-500/70 to-red-600/70 backdrop-blur-md text-white p-6
            rounded-2xl opacity-0 translate-y-3
            transition-all duration-300 ease-in-out
            group-hover:opacity-100 group-hover:translate-y-0;

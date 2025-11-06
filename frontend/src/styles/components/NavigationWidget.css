@@ -2,11 +2,10 @@
 
 .navigation-widget button {
     @apply items-center justify-between gap-3
-           px-6 py-4 rounded-2xl bg-linear-to-r from-green-400 to-green-500
-           shadow-md text-white font-medium
+           px-6 py-2 rounded-lg bg-linear-to-r from-gray-400 to-gray-500
+           shadow-md text-(--palette_White)  font-medium
            transition-all duration-300 ease-out
-           hover:from-green-500 hover:to-green-600 hover:shadow-lg
+           hover:from-gray-500 hover:to-gray-600 hover:shadow-lg
            select-none text-center uppercase;
-    /* width: fit-content; */
     width: 10vw;
     }
