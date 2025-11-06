@@ -22,15 +22,26 @@ function Roadmap() {
                         }}
                     >
                         {
-                            RoadmapSites.map((site) => (
-                                <div>
+                            RoadmapSites.map((site, index) => (
+                                <div style={{ position: "relative", }}>
                                     <SiteCard site={site}></SiteCard>
+                                    {index < RoadmapSites.length - 1 && <div style={{
+                                        position: "absolute",
+                                        top: "50%",
+                                        left: "50%",
+                                        transform: "translateX(-50%)",
+                                        width: "2px",
+                                        height: "100px",
+                                        backgroundColor: "var(--palette_White)",
+                                        zIndex: "-1",
+                                    }}
+                                    ></div>}
                                 </div>
                             ))
                         }
                     </div>
-                </span>
-            </div>
+                </span >
+            </div >
         )
     }
 }
