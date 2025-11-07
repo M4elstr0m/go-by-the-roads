@@ -36,6 +36,7 @@ func GetFolders(path string) []string {
 	return folders
 }
 
+// OpenURL opens a browser tab with the given link
 func OpenURL(s string) {
 	err := browser.OpenURL(s)
 	if err != nil {

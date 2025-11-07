@@ -17,8 +17,8 @@ function Home() {
 
                 <div className="grid justify-center overflow-y-auto overflow-x-hidden" style={{
                     gridTemplateColumns: "repeat(auto-fit, minmax(200px, 35vh))",
-                    columnGap: "15px", // horizontal gap
-                    rowGap: "15px",    // vertical gap
+                    columnGap: "15px",
+                    rowGap: "15px",
                     maxHeight: "65vh",
                 }}>
                     {AvailableRoadmaps.map((roadmap) => (

@@ -1,7 +1,7 @@
 export namespace roadmaps {
 	
 	export class Site {
-	    Id: number;
+	    id: number;
 	    title: string;
 	    desc: string;
 	    content: string;
@@ -13,7 +13,7 @@ export namespace roadmaps {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.Id = source["Id"];
+	        this.id = source["id"];
 	        this.title = source["title"];
 	        this.desc = source["desc"];
 	        this.content = source["content"];

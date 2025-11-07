@@ -2,11 +2,11 @@ package main
 
 import (
 	"embed"
-	"fmt"
 	"go-by-the-roads/backend/app"
 	"go-by-the-roads/backend/roadmaps"
 	"go-by-the-roads/backend/settings"
 	"go-by-the-roads/backend/utils"
+	"go-by-the-roads/backend/version"
 	"log"
 
 	"github.com/wailsapp/wails/v2"
@@ -20,7 +20,6 @@ var assets embed.FS
 func init() {
 	settings.Preferences.Load() // Will create settings.json on first launch if inexistant
 	roadmaps.RoadmapLoader.Scan()
-	roadmaps.RoadmapLoader.Save()
 }
 
 func main() {
@@ -31,13 +30,13 @@ func main() {
 
 		// Create application with options
 		err := wails.Run(&options.App{
-			Title:  "go-by-the-roads",
+			Title:  "Go By The Roads " + version.CurrentTag + " - By " + version.RepoOwner,
 			Width:  1024,
 			Height: 576,
 			AssetServer: &assetserver.Options{
 				Assets: assets,
 			},
-			BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
+			BackgroundColour: &options.RGBA{R: 45, G: 49, B: 66, A: 1},
 			OnStartup:        app.Startup,
 			Bind: []interface{}{
 				app,
@@ -49,12 +48,6 @@ func main() {
 		}
 	} else {
 		log.Println(utils.INFO_STR + "[main] testingMode enabled")
-
-		fmt.Printf("%v\n", settings.Preferences.RoadmapsPath)
-		if len(roadmaps.RoadmapLoader.ScannedFolders) != 0 {
-			roadmaps.RoadmapLoader.Load(roadmaps.RoadmapLoader.ScannedFolders[0])
-		}
-		fmt.Printf("%v\n", roadmaps.RoadmapLoader.Content)
 	}
 }
 

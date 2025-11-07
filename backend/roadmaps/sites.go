@@ -16,7 +16,7 @@ type Site struct {
 	// Each Id must be unique within a slice of Site
 	//
 	// The lower the Id is, the sooner the task should be completed
-	Id uint
+	Id uint `json:"id"`
 
 	Title       string `json:"title"`   // Title of a Site (will be written in bold)
 	Description string `json:"desc"`    // Short description of a Site (will be written in regular)
