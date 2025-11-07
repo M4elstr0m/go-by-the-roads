@@ -6,7 +6,7 @@ import RoadmapCard from '@/components/RoadmapCard';
 import { OpenRepoLink } from '@/../wailsjs/go/app/App';
 
 function Home() {
-    const { AvailableRoadmaps, loading, setAvailableRoadmaps } = fetchAvailableRoadmaps();
+    const { AvailableRoadmaps, loading, refresh } = fetchAvailableRoadmaps();
 
     if (loading) {
         return <LoadingScreen />;
@@ -22,9 +22,9 @@ function Home() {
                     maxHeight: "65vh",
                 }}>
                     {AvailableRoadmaps.map((roadmap) => (
-                        <RoadmapCard roadmap={roadmap} useStateHook={setAvailableRoadmaps}></RoadmapCard>
+                        <RoadmapCard roadmap={roadmap} refreshCall={refresh}></RoadmapCard>
                     ))}
-                    <RoadmapCard roadmap="\x00" useStateHook={setAvailableRoadmaps}></RoadmapCard>
+                    <RoadmapCard roadmap="\x00" refreshCall={refresh}></RoadmapCard>
                 </div>
             </div >
         )

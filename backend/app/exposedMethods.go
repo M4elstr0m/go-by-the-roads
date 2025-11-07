@@ -62,10 +62,8 @@ func (a *App) SaveSettings() {
 	settings.Preferences.Save()
 }
 
-func (a *App) NewRoadmap() string {
-	var rmap roadmaps.Map = roadmaps.NewMap()
-	roadmaps.RoadmapLoader.Content = rmap
+func (a *App) NewRoadmap() {
+	roadmaps.RoadmapLoader.Content = roadmaps.NewMap()
 	roadmaps.RoadmapLoader.Save(true)
 	roadmaps.RoadmapLoader.Scan()
-	return roadmaps.RoadmapLoader.Content.Title
 }

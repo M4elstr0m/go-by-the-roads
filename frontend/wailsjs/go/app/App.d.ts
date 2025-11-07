@@ -12,7 +12,7 @@ export function GetRoadmapTitle():Promise<string>;
 
 export function LogNavigation(arg1:string):Promise<void>;
 
-export function NewRoadmap():Promise<string>;
+export function NewRoadmap():Promise<void>;
 
 export function OpenLink(arg1:string):Promise<void>;
 

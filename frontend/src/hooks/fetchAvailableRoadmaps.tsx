@@ -5,20 +5,22 @@ export function fetchAvailableRoadmaps() {
     const [AvailableRoadmaps, setAvailableRoadmaps] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        async function fetchAvailableRoadmaps() {
-            try {
-                const result = await GetAvailableRoadmaps();
-                setAvailableRoadmaps(result);
-                setLoading(false);
-            } catch (err) {
-                console.error("Failed to load site data:", err);
-            } finally {
-                setLoading(false)
-            }
+    const refresh = async () => {
+        setLoading(true);
+        try {
+            const result = await GetAvailableRoadmaps();
+            setAvailableRoadmaps(result);
+        } catch (err) {
+            console.error("Failed to load site data:", err);
+        } finally {
+            setLoading(false);
         }
-        fetchAvailableRoadmaps();
+    };
+
+    // Fetch on mount
+    useEffect(() => {
+        refresh();
     }, []);
 
-    return { AvailableRoadmaps, loading, setAvailableRoadmaps }
+    return { AvailableRoadmaps, loading, refresh };
 }
