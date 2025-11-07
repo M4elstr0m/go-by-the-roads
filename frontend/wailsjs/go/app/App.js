@@ -22,6 +22,10 @@ export function LogNavigation(arg1) {
   return window['go']['app']['App']['LogNavigation'](arg1);
 }
 
+export function NewRoadmap() {
+  return window['go']['app']['App']['NewRoadmap']();
+}
+
 export function OpenLink(arg1) {
   return window['go']['app']['App']['OpenLink'](arg1);
 }

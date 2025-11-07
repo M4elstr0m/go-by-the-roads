@@ -50,10 +50,3 @@ func main() {
 		log.Println(utils.INFO_STR + "[main] testingMode enabled")
 	}
 }
-
-// Docstring rework
-
-// a default style setting that applies to new roadmaps
-// individual style settings for each roadmaps
-
-// Purge branch or idk

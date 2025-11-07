@@ -55,9 +55,17 @@ func (a *App) SwitchCompletedState(site roadmaps.Site) {
 }
 
 func (a *App) SaveRoadmap() {
-	roadmaps.RoadmapLoader.Save()
+	roadmaps.RoadmapLoader.Save(false)
 }
 
 func (a *App) SaveSettings() {
 	settings.Preferences.Save()
+}
+
+func (a *App) NewRoadmap() string {
+	var rmap roadmaps.Map = roadmaps.NewMap()
+	roadmaps.RoadmapLoader.Content = rmap
+	roadmaps.RoadmapLoader.Save(true)
+	roadmaps.RoadmapLoader.Scan()
+	return roadmaps.RoadmapLoader.Content.Title
 }

@@ -20,5 +20,5 @@ export function fetchAvailableRoadmaps() {
         fetchAvailableRoadmaps();
     }, []);
 
-    return { AvailableRoadmaps, loading }
+    return { AvailableRoadmaps, loading, setAvailableRoadmaps }
 }
