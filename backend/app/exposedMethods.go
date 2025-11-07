@@ -74,3 +74,15 @@ func (a *App) DeleteRoadmap(s string) {
 	utils.DeleteFolder(filepath.Join(settings.Preferences.RoadmapsPath, s))
 	roadmaps.RoadmapLoader.Scan()
 }
+
+func (a *App) DeleteSite(site roadmaps.Site) {
+	roadmaps.RoadmapLoader.Content.Elements.Remove(site)
+	roadmaps.RoadmapLoader.Save(false)
+}
+
+func (a *App) AddNewSite(index uint) {
+	var newSite roadmaps.Site = roadmaps.NewSiteFromMap(roadmaps.RoadmapLoader.Content)
+	newSite.Id = index
+	roadmaps.RoadmapLoader.Content.Elements.Insert(newSite)
+	roadmaps.RoadmapLoader.Save(false)
+}

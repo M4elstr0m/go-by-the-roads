@@ -61,7 +61,6 @@ func (ss *SiteSlice) Insert(s Site) {
 	for i := s.Id + 1; i < l+1; i++ {
 		(*ss)[i].Id++
 	}
-
 }
 
 // Remove deletes a Site {s} from the SiteSlice {ss} and adjusts all Site.Id

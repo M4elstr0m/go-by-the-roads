@@ -1,16 +1,17 @@
 import '@/styles/components/SiteCard.css';
 import type { roadmaps } from "@/../wailsjs/go/models";
-import { SaveRoadmap, SwitchCompletedState } from '@/../wailsjs/go/app/App';
+import { DeleteSite, SaveRoadmap, SwitchCompletedState } from '@/../wailsjs/go/app/App';
 import { useEffect, useRef, useState } from 'react';
 import TrashSVG from '@/components/svg/TrashSVG';
 
 type SiteCardProps = {
     site: roadmaps.Site;
+    completed: boolean;
     refreshCall: () => Promise<void>;
 };
 
-const SiteCard: React.FC<SiteCardProps> = ({ site, refreshCall }) => {
-    const [completed, setCompleted] = useState(site.completed);
+const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => {
+    //const [completed, setCompleted] = useState(site.completed);
 
     let siteCardClass;
     let hoverContentClass;
@@ -81,10 +82,11 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, refreshCall }) => {
                 className={siteCardClass}
                 onContextMenu={handleContextMenu}
                 ref={cardRef}
-                onClick={() => {
-                    SwitchCompletedState(site)
-                    SaveRoadmap()
-                    setCompleted(!completed)
+                onClick={async () => {
+                    await SwitchCompletedState(site);
+                    await SaveRoadmap();
+                    //setCompleted(!completed);
+                    await refreshCall();
                 }}
             >
                 <header className="mb-2">
@@ -104,6 +106,7 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, refreshCall }) => {
                 <span className="context-menu absolute left-1/2 -translate-x-1/2 py-2 z-1" ref={menuRef}>
                     <button onClick={async () => {
                         setMenuVisible(false);
+                        await DeleteSite(site);
                         await refreshCall();
                     }}>
                         <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
