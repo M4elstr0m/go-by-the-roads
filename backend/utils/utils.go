@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/Bios-Marcel/wastebasket/v2"
 	"github.com/fatih/color"
 	"github.com/pkg/browser"
 )
@@ -36,10 +37,18 @@ func GetFolders(path string) []string {
 	return folders
 }
 
+// DeleteFolder removes a given path from the hard drive
+func DeleteFolder(path string) {
+	err := wastebasket.Trash(path)
+	if err != nil {
+		log.Printf(WARNING_STR+"[DeleteFolder] failed to delete folder: %s", path)
+	}
+}
+
 // OpenURL opens a browser tab with the given link
 func OpenURL(s string) {
 	err := browser.OpenURL(s)
 	if err != nil {
-		log.Printf(WARNING_STR + "[OpenURL] failed to open URL: %v")
+		log.Printf(WARNING_STR+"[OpenURL] failed to open URL: %s", s)
 	}
 }

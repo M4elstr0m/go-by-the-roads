@@ -6,6 +6,7 @@ import (
 	"go-by-the-roads/backend/utils"
 	"go-by-the-roads/backend/version"
 	"log"
+	"path/filepath"
 )
 
 func (a *App) GetAvailableRoadmaps() []string {
@@ -65,5 +66,11 @@ func (a *App) SaveSettings() {
 func (a *App) NewRoadmap() {
 	roadmaps.RoadmapLoader.Content = roadmaps.NewMap()
 	roadmaps.RoadmapLoader.Save(true)
+	roadmaps.RoadmapLoader.Scan()
+}
+
+func (a *App) DeleteRoadmap(s string) {
+	log.Printf(utils.INFO_STR+"[DeleteRoadmap] removing \"%s\"", s)
+	utils.DeleteFolder(filepath.Join(settings.Preferences.RoadmapsPath, s))
 	roadmaps.RoadmapLoader.Scan()
 }

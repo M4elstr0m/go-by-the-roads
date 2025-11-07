@@ -21,10 +21,10 @@ function Home() {
                     rowGap: "15px",
                     maxHeight: "65vh",
                 }}>
+                    <RoadmapCard roadmap="\x00" refreshCall={refresh}></RoadmapCard>
                     {AvailableRoadmaps.map((roadmap) => (
                         <RoadmapCard roadmap={roadmap} refreshCall={refresh}></RoadmapCard>
                     ))}
-                    <RoadmapCard roadmap="\x00" refreshCall={refresh}></RoadmapCard>
                 </div>
             </div >
         )
