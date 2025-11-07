@@ -4,7 +4,7 @@ import { fetchRoadmapAttributes } from "@/hooks/fetchRoadmapAttributes";
 import '@/styles/pages/Roadmap.css';
 
 function Roadmap() {
-    const { RoadmapTitle, RoadmapSites, loading } = fetchRoadmapAttributes();
+    const { RoadmapTitle, RoadmapSites, loading, refresh } = fetchRoadmapAttributes();
 
     if (loading) {
         return <LoadingScreen />;
@@ -24,7 +24,7 @@ function Roadmap() {
                         {
                             RoadmapSites.map((site, index) => (
                                 <div style={{ position: "relative", }}>
-                                    <SiteCard site={site}></SiteCard>
+                                    <SiteCard site={site} refreshCall={refresh}></SiteCard>
 
                                     {
                                         index < RoadmapSites.length - 1 && <div style={{

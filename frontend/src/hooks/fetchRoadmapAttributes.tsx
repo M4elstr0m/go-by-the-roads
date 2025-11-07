@@ -25,20 +25,21 @@ export function fetchRoadmapAttributes() {
         fetchRoadmapTitle();
     }, []);
 
-    useEffect(() => {
-        async function fetchRoadmapSites() {
-            try {
-                const result = await GetRoadmapSites();
-                setRoadmapSites(result);
-                setLoadingSites(false);
-            } catch (err) {
-                console.error("Failed to load site data:", err);
-            } finally {
-                setLoadingSites(false);
-            }
+    async function fetchRoadmapSites() {
+        try {
+            const result = await GetRoadmapSites();
+            setRoadmapSites(result);
+            setLoadingSites(false);
+        } catch (err) {
+            console.error("Failed to load site data:", err);
+        } finally {
+            setLoadingSites(false);
         }
+    }
+
+    useEffect(() => {
         fetchRoadmapSites();
     }, []);
 
-    return { RoadmapTitle, RoadmapSites, loading: loadingTitle || loadingSites }
+    return { RoadmapTitle, RoadmapSites, loading: loadingTitle || loadingSites, refresh: fetchRoadmapSites }
 }

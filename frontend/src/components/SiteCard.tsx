@@ -5,9 +5,10 @@ import { useState } from 'react';
 
 type SiteCardProps = {
     site: roadmaps.Site;
+    refreshCall: () => Promise<void>;
 };
 
-const SiteCard: React.FC<SiteCardProps> = ({ site }) => {
+const SiteCard: React.FC<SiteCardProps> = ({ site, refreshCall }) => {
     const [completed, setCompleted] = useState(site.completed);
 
     let siteCardClass;
