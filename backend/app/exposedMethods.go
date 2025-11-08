@@ -25,6 +25,10 @@ func (a *App) GetRoadmapSites() roadmaps.SiteSlice {
 	return roadmaps.RoadmapLoader.Content.Elements
 }
 
+func (a *App) GetPreferences() settings.Settings {
+	return settings.Preferences
+}
+
 func (a *App) GetMapLoader() roadmaps.MapLoader {
 	return roadmaps.RoadmapLoader
 }

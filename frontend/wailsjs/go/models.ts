@@ -85,3 +85,20 @@ export namespace roadmaps {
 
 }
 
+export namespace settings {
+	
+	export class Settings {
+	    roadmapsPath: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new Settings(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.roadmapsPath = source["roadmapsPath"];
+	    }
+	}
+
+}
+

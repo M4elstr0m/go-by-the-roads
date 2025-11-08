@@ -22,6 +22,10 @@ export function GetMapLoader() {
   return window['go']['app']['App']['GetMapLoader']();
 }
 
+export function GetPreferences() {
+  return window['go']['app']['App']['GetPreferences']();
+}
+
 export function GetRoadmapSites() {
   return window['go']['app']['App']['GetRoadmapSites']();
 }
