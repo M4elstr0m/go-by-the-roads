@@ -86,3 +86,23 @@ func (a *App) AddNewSite(index uint) {
 	roadmaps.RoadmapLoader.Content.Elements.Insert(newSite)
 	roadmaps.RoadmapLoader.Save(false)
 }
+
+func (a *App) MoveUpSite(site roadmaps.Site) {
+	if len(roadmaps.RoadmapLoader.Content.Elements) > 1 {
+		if site.Id > 0 {
+			roadmaps.RoadmapLoader.Content.Elements.Remove(site)
+			site.Id--
+			roadmaps.RoadmapLoader.Content.Elements.Insert(site)
+		}
+	}
+}
+
+func (a *App) MoveDownSite(site roadmaps.Site) {
+	if len(roadmaps.RoadmapLoader.Content.Elements) > 1 {
+		if site.Id < uint(len(roadmaps.RoadmapLoader.Content.Elements)-1) {
+			roadmaps.RoadmapLoader.Content.Elements.Remove(site)
+			site.Id--
+			roadmaps.RoadmapLoader.Content.Elements.Insert(site)
+		}
+	}
+}

@@ -34,6 +34,14 @@ export function LogNavigation(arg1) {
   return window['go']['app']['App']['LogNavigation'](arg1);
 }
 
+export function MoveDownSite(arg1) {
+  return window['go']['app']['App']['MoveDownSite'](arg1);
+}
+
+export function MoveUpSite(arg1) {
+  return window['go']['app']['App']['MoveUpSite'](arg1);
+}
+
 export function NewRoadmap() {
   return window['go']['app']['App']['NewRoadmap']();
 }

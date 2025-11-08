@@ -1,8 +1,10 @@
 import '@/styles/components/SiteCard.css';
 import type { roadmaps } from "@/../wailsjs/go/models";
-import { DeleteSite, SaveRoadmap, SwitchCompletedState } from '@/../wailsjs/go/app/App';
+import { DeleteSite, SaveRoadmap, SwitchCompletedState, MoveUpSite, MoveDownSite } from '@/../wailsjs/go/app/App';
 import { useEffect, useRef, useState } from 'react';
 import TrashSVG from '@/components/svg/TrashSVG';
+import MoveUpSVG from './svg/MoveUpSVG';
+import MoveDownSVG from './svg/MoveDownSVG';
 
 type SiteCardProps = {
     site: roadmaps.Site;
@@ -104,13 +106,31 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => 
 
             {menuVisible && (
                 <span className="context-menu absolute left-1/2 -translate-x-1/2 py-2 z-1" ref={menuRef}>
-                    <button onClick={async () => {
+                    <button id="delete-button" onClick={async () => {
                         setMenuVisible(false);
                         await DeleteSite(site);
                         await refreshCall();
                     }}>
                         <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
                             <TrashSVG />
+                        </span>
+                    </button>
+                    <button id="moveup-button" onClick={async () => {
+                        setMenuVisible(false);
+                        await MoveUpSite(site);
+                        await refreshCall();
+                    }}>
+                        <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
+                            <MoveUpSVG />
+                        </span>
+                    </button>
+                    <button id="movedown-button" onClick={async () => {
+                        setMenuVisible(false);
+                        await MoveDownSite(site);
+                        await refreshCall();
+                    }}>
+                        <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
+                            <MoveDownSVG />
                         </span>
                     </button>
                 </span>
