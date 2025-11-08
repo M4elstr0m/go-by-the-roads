@@ -15,15 +15,15 @@ function Home() {
     if (loading) {
         return <LoadingScreen />;
     } else {
-        let editpanelpopup;
+        let editPanelPopUp;
 
         if (editPanelVisible) {
-            editpanelpopup = <RoadmapEditPanel setVisibility={setEditPanelVisible} roadmap={editPanelSubject} refreshCall={refresh} />
+            editPanelPopUp = <RoadmapEditPanel setVisibility={setEditPanelVisible} roadmap={editPanelSubject} refreshCall={refresh} />
         }
 
         return (
             <div id="home">
-                {editpanelpopup}
+                {editPanelPopUp}
 
                 <img className='hover:scale-105 transition-all' src={logo} id="logo" alt="logo" title='Link to repository' onClick={() => { OpenRepoLink() }} />
 
@@ -33,7 +33,7 @@ function Home() {
                     rowGap: "15px",
                     maxHeight: "65vh",
                 }}>
-                    <RoadmapCard roadmap="\x00" refreshCall={refresh} setEditPanelVisibility={setEditPanelVisible} setEditPanelRoadmap={setEditPanelSubject}></RoadmapCard>
+                    <RoadmapCard roadmap="\x00" refreshCall={refresh}></RoadmapCard>
                     {AvailableRoadmaps.map((roadmap) => (
                         <RoadmapCard roadmap={roadmap} refreshCall={refresh} setEditPanelVisibility={setEditPanelVisible} setEditPanelRoadmap={setEditPanelSubject}></RoadmapCard>
                     ))}

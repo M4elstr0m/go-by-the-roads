@@ -111,3 +111,22 @@ func (a *App) RenameRoadmap(old, new string) {
 	utils.RenameChildFolderUsingParent(settings.Preferences.RoadmapsPath, old, new)
 	roadmaps.RoadmapLoader.Scan()
 }
+
+func (a *App) ModifySiteByID(siteID uint, attribute, value string) {
+	for i := range roadmaps.RoadmapLoader.Content.Elements {
+		if roadmaps.RoadmapLoader.Content.Elements[i].Id == siteID {
+			switch attribute {
+			case "title":
+				roadmaps.RoadmapLoader.Content.Elements[i].Title = value
+			case "description", "desc":
+				roadmaps.RoadmapLoader.Content.Elements[i].Description = value
+			case "content":
+				roadmaps.RoadmapLoader.Content.Elements[i].Content = value
+			default:
+				log.Printf(utils.WARNING_STR+"[ModifySiteByID] Unknown attribute hardcoded in source code: \"%s\"", attribute)
+			}
+			return
+		}
+	}
+	log.Printf(utils.WARNING_STR+"[ModifySiteByID] call did not changed anything ModifySiteByID(%v, %v, %v)", siteID, attribute, value)
+}

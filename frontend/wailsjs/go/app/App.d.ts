@@ -18,6 +18,8 @@ export function GetRoadmapTitle():Promise<string>;
 
 export function LogNavigation(arg1:string):Promise<void>;
 
+export function ModifySiteByID(arg1:number,arg2:string,arg3:string):Promise<void>;
+
 export function MoveDownSite(arg1:roadmaps.Site):Promise<void>;
 
 export function MoveUpSite(arg1:roadmaps.Site):Promise<void>;

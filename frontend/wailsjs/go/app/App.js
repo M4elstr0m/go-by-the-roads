@@ -34,6 +34,10 @@ export function LogNavigation(arg1) {
   return window['go']['app']['App']['LogNavigation'](arg1);
 }
 
+export function ModifySiteByID(arg1, arg2, arg3) {
+  return window['go']['app']['App']['ModifySiteByID'](arg1, arg2, arg3);
+}
+
 export function MoveDownSite(arg1) {
   return window['go']['app']['App']['MoveDownSite'](arg1);
 }

@@ -9,8 +9,8 @@ import EditSVG from './svg/EditSVG';
 type RoadmapCardProps = {
     roadmap: string;
     refreshCall: () => Promise<void>;
-    setEditPanelVisibility: React.Dispatch<React.SetStateAction<boolean>>;
-    setEditPanelRoadmap: React.Dispatch<React.SetStateAction<string>>;
+    setEditPanelVisibility?: React.Dispatch<React.SetStateAction<boolean>>;
+    setEditPanelRoadmap?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap, refreshCall, setEditPanelVisibility, setEditPanelRoadmap }) => {
@@ -106,9 +106,10 @@ const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap, refreshCall, setEdit
 
                         <button id="edit-button" onClick={async () => {
                             setMenuVisible(false);
-                            setEditPanelVisibility(true);
-                            setEditPanelRoadmap(roadmap);
-                            //await refreshCall();
+                            if (setEditPanelVisibility && setEditPanelRoadmap) {
+                                setEditPanelVisibility(true);
+                                setEditPanelRoadmap(roadmap);
+                            }
                         }}>
                             <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
                                 <EditSVG />

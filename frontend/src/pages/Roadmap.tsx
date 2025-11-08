@@ -4,9 +4,20 @@ import AddSVG from "@/components/svg/AddSVG";
 import { fetchRoadmapAttributes } from "@/hooks/fetchRoadmapAttributes";
 import '@/styles/pages/Roadmap.css';
 import { AddNewSite } from "@/../wailsjs/go/app/App";
+import { useState } from "react";
+import type { roadmaps } from "@/../wailsjs/go/models";
+import SiteEditPanel from "@/components/SiteEditPanel";
 
 function Roadmap() {
     const { RoadmapTitle, RoadmapSites, loading, refresh } = fetchRoadmapAttributes();
+    const [editPanelVisible, setEditPanelVisible] = useState(false);
+    const [editPanelSubject, setEditPanelSubject] = useState<roadmaps.Site>();
+
+    let editPanelPopUp;
+
+    if (editPanelVisible) {
+        editPanelPopUp = <SiteEditPanel setVisibility={setEditPanelVisible} site={editPanelSubject} refreshCall={refresh} />
+    }
 
     if (loading) {
         return <LoadingScreen />;
@@ -16,7 +27,9 @@ function Roadmap() {
         if (RoadmapSites.length != 0) {
             siteListContent = RoadmapSites.map((site, index) => (
                 <div style={{ position: "relative", }}>
-                    <SiteCard site={site} completed={site.completed} refreshCall={refresh}></SiteCard>
+                    <SiteCard site={site} completed={site.completed} refreshCall={refresh}
+                        setEditPanelVisibility={setEditPanelVisible}
+                        setEditPanelSite={setEditPanelSubject} />
 
                     { // white path
                         index < RoadmapSites.length && <div className="relative group flex justify-center">
@@ -66,6 +79,7 @@ function Roadmap() {
 
         return (
             <div id="roadmap" className="">
+                {editPanelPopUp}
                 <h1 className="title inline-block font-extrabold tracking-tight text-white drop-shadow-md uppercase hover:scale-110 transition-all duration-200">
                     {RoadmapTitle}
                 </h1>

@@ -5,16 +5,17 @@ import { useEffect, useRef, useState } from 'react';
 import TrashSVG from '@/components/svg/TrashSVG';
 import MoveUpSVG from './svg/MoveUpSVG';
 import MoveDownSVG from './svg/MoveDownSVG';
+import EditSVG from './svg/EditSVG';
 
 type SiteCardProps = {
     site: roadmaps.Site;
     completed: boolean;
     refreshCall: () => Promise<void>;
+    setEditPanelVisibility: React.Dispatch<React.SetStateAction<boolean>>;
+    setEditPanelSite: React.Dispatch<React.SetStateAction<roadmaps.Site | undefined>>;
 };
 
-const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => {
-    //const [completed, setCompleted] = useState(site.completed);
-
+const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall, setEditPanelVisibility, setEditPanelSite }) => {
     let siteCardClass;
     let hoverContentClass;
     let siteDescClass;
@@ -87,7 +88,6 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => 
                 onClick={async () => {
                     await SwitchCompletedState(site);
                     await SaveRoadmap();
-                    //setCompleted(!completed);
                     await refreshCall();
                 }}
             >
@@ -123,6 +123,16 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => 
                     }}>
                         <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
                             <TrashSVG />
+                        </span>
+                    </button>
+
+                    <button id="edit-button" onClick={async () => {
+                        setMenuVisible(false);
+                        setEditPanelVisibility(true);
+                        setEditPanelSite(site);
+                    }}>
+                        <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
+                            <EditSVG />
                         </span>
                     </button>
 
