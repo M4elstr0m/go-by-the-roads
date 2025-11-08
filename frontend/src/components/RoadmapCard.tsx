@@ -4,13 +4,16 @@ import { DeleteRoadmap, NewRoadmap, SelectRoadmap } from "@/../wailsjs/go/app/Ap
 import { navigateAndLog } from "@/utils/logNavigate";
 import { useEffect, useRef, useState } from 'react';
 import TrashSVG from '@/components/svg/TrashSVG';
+import EditSVG from './svg/EditSVG';
 
 type RoadmapCardProps = {
     roadmap: string;
     refreshCall: () => Promise<void>;
+    setEditPanelVisibility: React.Dispatch<React.SetStateAction<boolean>>;
+    setEditPanelRoadmap: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap, refreshCall }) => {
+const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap, refreshCall, setEditPanelVisibility, setEditPanelRoadmap }) => {
     if (roadmap == "\\x00") {
         return (
             <span className="relative inline-block">
@@ -91,13 +94,24 @@ const RoadmapCard: React.FC<RoadmapCardProps> = ({ roadmap, refreshCall }) => {
 
                 {menuVisible && (
                     <span className="context-menu absolute left-1/2 -translate-x-1/2 py-2 z-1" ref={menuRef}>
-                        <button onClick={async () => {
+                        <button id="delete-button" onClick={async () => {
                             setMenuVisible(false);
                             await DeleteRoadmap(roadmap);
                             await refreshCall();
                         }}>
                             <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
                                 <TrashSVG />
+                            </span>
+                        </button>
+
+                        <button id="edit-button" onClick={async () => {
+                            setMenuVisible(false);
+                            setEditPanelVisibility(true);
+                            setEditPanelRoadmap(roadmap);
+                            //await refreshCall();
+                        }}>
+                            <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
+                                <EditSVG />
                             </span>
                         </button>
                     </span>

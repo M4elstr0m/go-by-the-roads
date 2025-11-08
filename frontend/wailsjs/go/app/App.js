@@ -54,6 +54,10 @@ export function OpenRepoLink() {
   return window['go']['app']['App']['OpenRepoLink']();
 }
 
+export function RenameRoadmap(arg1, arg2) {
+  return window['go']['app']['App']['RenameRoadmap'](arg1, arg2);
+}
+
 export function SaveRoadmap() {
   return window['go']['app']['App']['SaveRoadmap']();
 }

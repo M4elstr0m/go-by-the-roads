@@ -106,3 +106,8 @@ func (a *App) MoveDownSite(site roadmaps.Site) {
 		}
 	}
 }
+
+func (a *App) RenameRoadmap(old, new string) {
+	utils.RenameChildFolderUsingParent(settings.Preferences.RoadmapsPath, old, new)
+	roadmaps.RoadmapLoader.Scan()
+}

@@ -28,6 +28,8 @@ export function OpenLink(arg1:string):Promise<void>;
 
 export function OpenRepoLink():Promise<void>;
 
+export function RenameRoadmap(arg1:string,arg2:string):Promise<void>;
+
 export function SaveRoadmap():Promise<void>;
 
 export function SaveSettings():Promise<void>;
