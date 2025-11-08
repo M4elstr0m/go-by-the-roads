@@ -2,9 +2,13 @@ import NavigationWidget from '@/components/NavigationWidget';
 import { OpenRepoLink } from '@/../wailsjs/go/app/App';
 import { fetchVersion } from '@/hooks/fetchVersion';
 import GithubSVG from '@/components/svg/GithubSVG';
+import PreferencesSVG from './svg/PreferencesSVG';
+import { navigateAndLog } from '@/utils/logNavigate';
+import { useNavigate } from 'react-router-dom';
 
 const AppFooter: React.FC = () => {
     const { IsLatestVersion, CurrentTag, LatestReleaseTag, RepoLink, RepoOwner } = fetchVersion();
+    const navigate = useNavigate();
 
     let content;
     let content_class;
@@ -28,6 +32,7 @@ const AppFooter: React.FC = () => {
             {/* RIGHT */}
             <div className='flex flex-row gap-3'>
                 <h1 className={content_class}>{content}</h1>
+
                 <button onClick={() => { OpenRepoLink() }} style={{
                     "--icon-color": "var(--palette_White)",
                 } as React.CSSProperties}
@@ -38,6 +43,18 @@ const AppFooter: React.FC = () => {
                         (e.currentTarget.style.setProperty("--icon-color", "var(--palette_White)"))
                     }>
                     <GithubSVG />
+                </button>
+
+                <button className="hover:rotate-180 transition-all duration-500" onClick={() => { navigateAndLog(navigate, "/preferences") }} style={{
+                    "--icon-color": "var(--palette_White)",
+                } as React.CSSProperties}
+                    onMouseEnter={(e) =>
+                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_Silver)"))
+                    }
+                    onMouseLeave={(e) =>
+                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_White)"))
+                    }>
+                    <PreferencesSVG />
                 </button>
             </div>
         </footer>

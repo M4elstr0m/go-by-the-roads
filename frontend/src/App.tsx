@@ -6,26 +6,28 @@ import Roadmap from '@/pages/Roadmap';
 import { fetchVersion } from "@/hooks/fetchVersion";
 import NewVersion from "@/components/NewVersion";
 import AppFooter from "@/components/AppFooter";
+import Preferences from "@/pages/Preferences";
 
 
 function App() {
     const { IsLatestVersion, CurrentTag, LatestReleaseTag, RepoLink, RepoOwner } = fetchVersion();
     const [ShowNewVersion, setShowNewVersion] = useState(!IsLatestVersion);
 
-    let popup;
+    let PopUp;
     if (ShowNewVersion) {
-        popup = <NewVersion SubmitAction={() => setShowNewVersion(false)} CurrentTag={CurrentTag} LatestReleaseTag={LatestReleaseTag} RepoLink={RepoLink} RepoOwner={RepoOwner} ></NewVersion>
+        PopUp = <NewVersion SubmitAction={() => setShowNewVersion(false)} CurrentTag={CurrentTag} LatestReleaseTag={LatestReleaseTag} RepoLink={RepoLink} RepoOwner={RepoOwner} ></NewVersion>
     }
 
     return (
         <>
 
             < HashRouter >
-                {popup}
+                {PopUp}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/roadmap" element={<Roadmap />} />
+                    <Route path="/preferences" element={<Preferences />} />
                 </Routes>
                 <AppFooter></AppFooter>
             </HashRouter >
