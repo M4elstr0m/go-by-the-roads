@@ -134,3 +134,33 @@ func (a *App) ModifySiteByID(siteID uint, attribute, value string) {
 	}
 	log.Printf(utils.WARNING_STR+"[ModifySiteByID] call did not changed anything ModifySiteByID(%v, %v, %v)", siteID, attribute, value)
 }
+
+func (a *App) ModifyPreferences(attribute string, value interface{}) {
+	switch attribute {
+	case "roadmapsPath":
+		settings.Preferences.RoadmapsPath = value.(string)
+		roadmaps.RoadmapLoader.Scan()
+	case "windowWidth":
+		settings.Preferences.WindowWidth = int(value.(float64))
+	case "windowHeight":
+		settings.Preferences.WindowHeight = int(value.(float64))
+	default:
+		log.Printf(utils.WARNING_STR+"[ModifyPreferences] Unknown attribute hardcoded in source code: \"%s\"", attribute)
+		//log.Printf(utils.WARNING_STR+"[ModifyPreferences] call did not changed anything ModifyPreferences(%v, %v)", attribute, value)
+	}
+
+}
+
+func (a *App) ResetPreference(attribute string) {
+	var defaultPrefs settings.Settings = settings.GetDefaultSettings()
+	switch attribute {
+	case "roadmapsPath":
+		settings.Preferences.RoadmapsPath = defaultPrefs.RoadmapsPath
+	case "windowWidth":
+		settings.Preferences.WindowWidth = defaultPrefs.WindowWidth
+	case "windowHeight":
+		settings.Preferences.WindowHeight = defaultPrefs.WindowHeight
+	default:
+		log.Printf(utils.WARNING_STR+"[ResetPreference] Unknown attribute hardcoded in source code: \"%s\"", attribute)
+	}
+}

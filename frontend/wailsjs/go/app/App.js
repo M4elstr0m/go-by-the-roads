@@ -38,6 +38,10 @@ export function LogNavigation(arg1) {
   return window['go']['app']['App']['LogNavigation'](arg1);
 }
 
+export function ModifyPreferences(arg1, arg2) {
+  return window['go']['app']['App']['ModifyPreferences'](arg1, arg2);
+}
+
 export function ModifySiteByID(arg1, arg2, arg3) {
   return window['go']['app']['App']['ModifySiteByID'](arg1, arg2, arg3);
 }
@@ -64,6 +68,10 @@ export function OpenRepoLink() {
 
 export function RenameRoadmap(arg1, arg2) {
   return window['go']['app']['App']['RenameRoadmap'](arg1, arg2);
+}
+
+export function ResetPreference(arg1) {
+  return window['go']['app']['App']['ResetPreference'](arg1);
 }
 
 export function SaveRoadmap() {

@@ -19,6 +19,7 @@ var assets embed.FS
 
 func init() {
 	settings.Preferences.Load() // Will create settings.json on first launch if inexistant
+	settings.Preferences.Save() // Will create inexistant fields
 	roadmaps.RoadmapLoader.Scan()
 }
 
@@ -31,8 +32,8 @@ func main() {
 		// Create application with options
 		err := wails.Run(&options.App{
 			Title:  "Go By The Roads " + version.CurrentTag + " - By " + version.RepoOwner,
-			Width:  1024,
-			Height: 576,
+			Width:  settings.Preferences.WindowWidth,
+			Height: settings.Preferences.WindowHeight,
 			AssetServer: &assetserver.Options{
 				Assets: assets,
 			},

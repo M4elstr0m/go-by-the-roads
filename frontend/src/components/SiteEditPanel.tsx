@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ModifySiteByID, RenameRoadmap } from "@/../wailsjs/go/app/App";
+import { ModifySiteByID, SaveRoadmap } from "@/../wailsjs/go/app/App";
 import type { roadmaps } from "@/../wailsjs/go/models";
 
 type SiteEditPanelProps = {
@@ -56,10 +56,13 @@ const SiteEditPanel: React.FC<SiteEditPanelProps> = ({ setVisibility, site, refr
             </p>
             <button className="bg-(--palette_PaynesGray) text-(--palette_White) px-4 py-2 rounded-lg hover:bg-(--palette_GunMetal)"
                 onClick={async () => {
+                    let didChange = false;
+
                     setVisibility(false);
-                    if (title != site.title) { await ModifySiteByID(site.id, "title", title) }
-                    if (title != site.desc) { await ModifySiteByID(site.id, "desc", desc) }
-                    if (title != site.content) { await ModifySiteByID(site.id, "content", content) }
+                    if (title != site.title) { await ModifySiteByID(site.id, "title", title); didChange = true }
+                    if (title != site.desc) { await ModifySiteByID(site.id, "desc", desc); didChange = true }
+                    if (title != site.content) { await ModifySiteByID(site.id, "content", content); didChange = true }
+                    if (didChange) { await SaveRoadmap(); didChange = false }
                     await refreshCall();
                 }}>
                 SAVE

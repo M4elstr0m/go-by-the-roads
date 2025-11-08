@@ -20,6 +20,8 @@ var Preferences Settings // Global variable storing the value of user's settings
 type Settings struct {
 	// Path of the folder where each individual roadmap folder are located
 	RoadmapsPath string `json:"roadmapsPath" default:"data/roadmaps"`
+	WindowWidth  int    `json:"windowWidth" default:"1024"`
+	WindowHeight int    `json:"windowHeight" default:"576"`
 }
 
 // Returns a Settings struct with default values
