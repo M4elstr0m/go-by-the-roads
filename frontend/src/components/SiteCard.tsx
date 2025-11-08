@@ -105,16 +105,7 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => 
             </article>
 
             {menuVisible && (
-                <span className="context-menu absolute left-1/2 -translate-x-1/2 py-2 z-1" ref={menuRef}>
-                    <button id="delete-button" onClick={async () => {
-                        setMenuVisible(false);
-                        await DeleteSite(site);
-                        await refreshCall();
-                    }}>
-                        <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
-                            <TrashSVG />
-                        </span>
-                    </button>
+                <span className="context-menu absolute left-1/2 -translate-x-1/2 py-2 z-11" ref={menuRef}>
                     <button id="moveup-button" onClick={async () => {
                         setMenuVisible(false);
                         await MoveUpSite(site);
@@ -124,6 +115,17 @@ const SiteCard: React.FC<SiteCardProps> = ({ site, completed, refreshCall }) => 
                             <MoveUpSVG />
                         </span>
                     </button>
+
+                    <button id="delete-button" onClick={async () => {
+                        setMenuVisible(false);
+                        await DeleteSite(site);
+                        await refreshCall();
+                    }}>
+                        <span className="flex items-center justify-center rounded-full bg-(--palette_GunMetal-200)/50">
+                            <TrashSVG />
+                        </span>
+                    </button>
+
                     <button id="movedown-button" onClick={async () => {
                         setMenuVisible(false);
                         await MoveDownSite(site);
