@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from '@/pages/Home';
 import About from '@/pages/About';
@@ -10,6 +10,19 @@ import Preferences from "@/pages/Preferences";
 
 
 function App() {
+    useEffect(() => {
+        const handleContextMenu = (e: MouseEvent) => {
+            e.preventDefault();
+        };
+
+        document.addEventListener("contextmenu", handleContextMenu);
+
+        // Cleanup listener on unmount
+        return () => {
+            document.removeEventListener("contextmenu", handleContextMenu);
+        };
+    }, []);
+
     const { IsLatestVersion, CurrentTag, LatestReleaseTag, RepoLink, RepoOwner } = fetchVersion();
     const [ShowNewVersion, setShowNewVersion] = useState(!IsLatestVersion);
 

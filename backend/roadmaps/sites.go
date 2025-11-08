@@ -36,8 +36,8 @@ func NewSiteFromMap(m Map) Site {
 		Id: uint(len(m.Elements)),
 
 		Title:       "New Site",
-		Description: "",
-		Content:     "",
+		Description: "Lorem ipsum",
+		Content:     "Lorem ipsum",
 
 		Completed: false,
 	}
