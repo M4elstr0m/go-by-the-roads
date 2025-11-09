@@ -16,7 +16,7 @@
 <!-- <h6>Abbreviation: gbtr</h6> -->
 
 <div align="center">
-<img src='https://raw.githubusercontent.com/M4elstr0m/go-by-the-roads/main/build/appicon.png' alt="Icon of Go by the Roads" style="width:50%; height: auto">
+<img src='https://raw.githubusercontent.com/M4elstr0m/go-by-the-roads/main/build/appicon.png' alt="Icon of Go by the Roads" style="width:30%; height: auto">
 </div>
 
 ---
