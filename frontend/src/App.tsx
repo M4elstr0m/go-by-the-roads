@@ -28,7 +28,11 @@ function App() {
 
     let PopUp;
     if (ShowNewVersion) {
-        PopUp = <NewVersion SubmitAction={() => setShowNewVersion(false)} CurrentTag={CurrentTag} LatestReleaseTag={LatestReleaseTag} RepoLink={RepoLink} RepoOwner={RepoOwner} ></NewVersion>
+        if (!IsLatestVersion) {
+            PopUp = <NewVersion SubmitAction={() => setShowNewVersion(false)} CurrentTag={CurrentTag} LatestReleaseTag={LatestReleaseTag} RepoLink={RepoLink} RepoOwner={RepoOwner} ></NewVersion>
+        }
+    } else {
+        PopUp = <span></span>
     }
 
     return (
