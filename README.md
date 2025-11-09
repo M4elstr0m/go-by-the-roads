@@ -7,7 +7,7 @@
 <div align="center">
 
 ![visitor badge](https://visitor-badge.laobi.icu/badge?page_id=M4elstr0m.go-by-the-roads&left_text=Visitors&right_color=orange) ![GitHub Repo stars](https://img.shields.io/github/stars/M4elstr0m/go-by-the-roads)
- ![Static Badge](https://img.shields.io/badge/License-No_License-lightgrey) ![Static Badge](https://img.shields.io/badge/Size-15_Mo-green) ![Static Badge](https://img.shields.io/badge/Languages-1-blue) ![Static Badge](https://img.shields.io/badge/Platform-Windows-red)
+ ![Static Badge](https://img.shields.io/badge/License-PolyForm_Strict_License_1.0.0-lightgrey) ![Static Badge](https://img.shields.io/badge/Size-4.12_Mo-green) ![Static Badge](https://img.shields.io/badge/Languages-1-blue) ![Static Badge](https://img.shields.io/badge/Platform-Windows-red)
 
 <!-- ![Github All Releases](https://img.shields.io/github/downloads/M4elstr0m/go-by-the-roads/total.svg) -->
 
@@ -35,7 +35,7 @@ Just extract the archive and launch ***gbtr.exe*** (if Windows prevents you to o
 
 <div align="center">
 
-<img src='https://github.com/user-attachments/assets/' alt="v1.0.0 homepage screenshot" style="width:50%; height: 50%">
+<img src='https://github.com/user-attachments/assets/db50f545-efbb-4bde-9498-d30fb3e3cf0e' alt="v1.0.0 homepage screenshot" style="width:70%; height: auto">
 
 <br>
 
