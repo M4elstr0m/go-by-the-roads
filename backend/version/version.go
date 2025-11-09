@@ -10,9 +10,9 @@ import (
 
 // Not very secure
 
-const CurrentTag string = "v0.0.1"
+const CurrentTag string = "v1.0.0"
 const RepoOwner string = "M4elstr0m"
-const RepoName string = "go-by-the-roads"
+const RepoName string = "Go by the Roads"
 const RepoLink string = "https://github.com/M4elstr0m/go-by-the-roads"
 
 // Type used to parse version json
