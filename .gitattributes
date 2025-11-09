@@ -1,1 +1,2 @@
 *.nsi linguist-language=NSIS
+*.nsh linguist-language=NSIS
