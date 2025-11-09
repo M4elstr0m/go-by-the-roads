@@ -7,7 +7,7 @@ import { navigateAndLog } from '@/utils/logNavigate';
 import { useNavigate } from 'react-router-dom';
 
 const AppFooter: React.FC = () => {
-    const { IsLatestVersion, CurrentTag, LatestReleaseTag, RepoLink, RepoOwner } = fetchVersion();
+    const { IsLatestVersion } = fetchVersion();
     const navigate = useNavigate();
 
     let content;
@@ -45,9 +45,10 @@ const AppFooter: React.FC = () => {
                     <GithubSVG />
                 </button>
 
-                <button className="hover:rotate-180 transition-all duration-500" onClick={() => { navigateAndLog(navigate, "/preferences") }} style={{
-                    "--icon-color": "var(--palette_White)",
-                } as React.CSSProperties}
+                <button className="hover:rotate-180 transition-all duration-500" onClick={() => { navigateAndLog(navigate, "/preferences") }}
+                    style={{
+                        "--icon-color": "var(--palette_White)",
+                    } as React.CSSProperties}
                     onMouseEnter={(e) =>
                         (e.currentTarget.style.setProperty("--icon-color", "var(--palette_Silver)"))
                     }
