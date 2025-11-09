@@ -40,4 +40,4 @@ require (
 	golang.org/x/text v0.22.0 // indirect
 )
 
-// replace github.com/wailsapp/wails/v2 v2.10.2 => C:\Users\Maelstrom\go\pkg\mod
+// replace github.com/wailsapp/wails/v2 v2.10.2 => C:\Users\{username}\go\pkg\mod
