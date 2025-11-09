@@ -5,7 +5,7 @@ import { navigateAndLog } from "@/utils/logNavigate";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModifyPreferences, ResetPreference, SaveSettings } from "@/../wailsjs/go/app/App";
-import ResetSVG from "@/components/svg/ResetSVG";
+import ResetPreferenceButton from "@/components/ResetPreferenceButton";
 
 function Preferences() {
     const { preferences, loading, refresh } = fetchPreferences();
@@ -46,22 +46,11 @@ function Preferences() {
                                     value={roadmapsPath}
                                     onChange={(e) => setRoadmapsPath(e.target.value)}
                                 />
-                                <button style={{
-                                    "--icon-color": "var(--palette_GunMetal)",
-                                } as React.CSSProperties}
-                                    onMouseEnter={(e) =>
-                                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_GunMetal)"))
-                                    }
-                                    onMouseLeave={(e) =>
-                                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_GunMetal-200)"))
-                                    }
-                                    onClick={async () => {
-                                        await ResetPreference("roadmapsPath");
-                                        await SaveSettings();
-                                        await refresh();
-                                    }}>
-                                    <ResetSVG />
-                                </button>
+                                <ResetPreferenceButton onClick={async () => {
+                                    await ResetPreference("roadmapsPath");
+                                    await SaveSettings();
+                                    await refresh();
+                                }} />
                             </div>
 
                             <div className="font-bold mb-1 ml-3">
@@ -76,22 +65,11 @@ function Preferences() {
                                     value={windowWidth}
                                     onChange={(e) => setWindowWidth(parseInt(e.target.value))}
                                 />
-                                <button style={{
-                                    "--icon-color": "var(--palette_GunMetal)",
-                                } as React.CSSProperties}
-                                    onMouseEnter={(e) =>
-                                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_GunMetal)"))
-                                    }
-                                    onMouseLeave={(e) =>
-                                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_GunMetal-200)"))
-                                    }
-                                    onClick={async () => {
-                                        await ResetPreference("windowWidth");
-                                        await SaveSettings();
-                                        await refresh();
-                                    }}>
-                                    <ResetSVG />
-                                </button>
+                                <ResetPreferenceButton onClick={async () => {
+                                    await ResetPreference("windowWidth");
+                                    await SaveSettings();
+                                    await refresh();
+                                }} />
                             </div>
 
                             <div className="font-bold mb-1 ml-3">
@@ -106,22 +84,11 @@ function Preferences() {
                                     value={windowHeight}
                                     onChange={(e) => setWindowHeight(parseInt(e.target.value))}
                                 />
-                                <button style={{
-                                    "--icon-color": "var(--palette_GunMetal)",
-                                } as React.CSSProperties}
-                                    onMouseEnter={(e) =>
-                                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_GunMetal)"))
-                                    }
-                                    onMouseLeave={(e) =>
-                                        (e.currentTarget.style.setProperty("--icon-color", "var(--palette_GunMetal-200)"))
-                                    }
-                                    onClick={async () => {
-                                        await ResetPreference("windowHeight");
-                                        await SaveSettings();
-                                        await refresh();
-                                    }}>
-                                    <ResetSVG />
-                                </button>
+                                <ResetPreferenceButton onClick={async () => {
+                                    await ResetPreference("windowHeight");
+                                    await SaveSettings();
+                                    await refresh();
+                                }} />
                             </div>
                         </p >
                         <button className="bg-(--palette_PaynesGray) text-(--palette_White) px-4 py-2 rounded-lg hover:bg-(--palette_GunMetal)"
