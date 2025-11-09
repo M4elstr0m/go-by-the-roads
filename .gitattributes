@@ -1,4 +1,4 @@
 *.nsi linguist-language=Ignore
 *.nsh linguist-language=Ignore
 
-frontend/wailsjs/* linguist-language=Ignore
+frontend/wailsjs/** linguist-language=Ignore
