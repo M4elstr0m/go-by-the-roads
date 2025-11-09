@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Version } from "@/../wailsjs/go/app/App";
 
 export function fetchVersion() {
-    const [VersionCallOutput, setVersionCallOutput] = useState<any[]>([false, "Unknown", "Unknown", "https://github.com/M4elstr0m/go-by-the-roads", "M4elstr0m"]);
+    const [VersionCallOutput, setVersionCallOutput] = useState<any[]>([false, "?", "?", "https://github.com/M4elstr0m/go-by-the-roads", "M4elstr0m"]);
 
     useEffect(() => {
         async function callHandling() {
