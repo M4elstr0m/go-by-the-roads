@@ -8,6 +8,7 @@ import (
 	"go-by-the-roads/backend/utils"
 	"go-by-the-roads/backend/version"
 	"log"
+	"os"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -24,6 +25,19 @@ func init() {
 }
 
 func main() {
+	// logging to file
+	logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		log.Printf(utils.WARNING_STR+"Failed to read/create \"app.log\": %v", err)
+	}
+	defer logFile.Close()
+
+	log.SetOutput(logFile)
+
+	log.Print("\n")
+	log.Println("App started...")
+	// here the real app starts
+
 	const testingMode bool = false
 	if !testingMode {
 		// Create an instance of the app structure
