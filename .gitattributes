@@ -1,2 +1,2 @@
-*.nsi linguist-vendored=NSIS
-*.nsh linguist-vendored=NSIS
+*.nsi linguist-language=Ignore
+*.nsh linguist-language=Ignore
