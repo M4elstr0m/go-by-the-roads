@@ -15,6 +15,8 @@ const SiteEditPanel: React.FC<SiteEditPanelProps> = ({ setVisibility, site, refr
         const [desc, setDesc] = useState(site.desc);
         const [content, setContent] = useState(site.content);
 
+        let inputClass = "border border-(--palette_GunMetal) rounded-lg p-2 w-full text-(--palette_White) bg-(--palette_PaynesGray) focus:outline-none focus:ring-2 focus:ring-(--palette_GunMetal) hover:ring-1 hover:ring-(--palette_PaynesGray) transition-all";
+
         htmlContent = <div className="bg-(--palette_Silver) rounded-2xl shadow-lg p-6 w-120 text-center">
             <h1 className="text-(--palette_GunMetal) text-2xl font-extrabold mb-3">Edit Panel</h1>
             <p className="text-(--palette_GunMetal) mb-4 text-left">
@@ -23,9 +25,7 @@ const SiteEditPanel: React.FC<SiteEditPanelProps> = ({ setVisibility, site, refr
                 </div>
                 <input
                     type="text"
-                    className="border border-(--palette_GunMetal) rounded-lg p-2 w-full text-(--palette_White) bg-(--palette_PaynesGray)
-                        focus:outline-none focus:ring-2 focus:ring-(--palette_GunMetal)
-                        hover:ring-1 hover:ring-(--palette_PaynesGray) transition-all"
+                    className={inputClass}
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
@@ -35,9 +35,7 @@ const SiteEditPanel: React.FC<SiteEditPanelProps> = ({ setVisibility, site, refr
                 </div>
                 <input
                     type="text"
-                    className="border border-(--palette_GunMetal) rounded-lg p-2 w-full text-(--palette_White) bg-(--palette_PaynesGray)
-                        focus:outline-none focus:ring-2 focus:ring-(--palette_GunMetal)
-                        hover:ring-1 hover:ring-(--palette_PaynesGray) transition-all"
+                    className={inputClass}
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
                 />
@@ -47,9 +45,7 @@ const SiteEditPanel: React.FC<SiteEditPanelProps> = ({ setVisibility, site, refr
                 </div>
                 <input
                     type="text"
-                    className="border border-(--palette_GunMetal) rounded-lg p-2 w-full text-(--palette_White) bg-(--palette_PaynesGray)
-                        focus:outline-none focus:ring-2 focus:ring-(--palette_GunMetal)
-                        hover:ring-1 hover:ring-(--palette_PaynesGray) transition-all"
+                    className={inputClass}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
