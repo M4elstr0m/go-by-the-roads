@@ -13,6 +13,7 @@ import (
 const CurrentTag string = "v1.0.0"
 const RepoOwner string = "M4elstr0m"
 const RepoName string = "Go by the Roads"
+const RepoNameStrict string = "go-by-the-roads"
 const RepoLink string = "https://github.com/M4elstr0m/go-by-the-roads"
 
 // Type used to parse version json
@@ -23,7 +24,7 @@ type githubRelease struct {
 // GetLatestReleaseTag returns the latest release tag from Github (eg. v2.0.1)
 func GetLatestReleaseTag() string {
 	var err error = nil
-	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/releases/latest", RepoOwner, RepoName)
+	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/releases/latest", RepoOwner, RepoNameStrict)
 
 	resp, err := http.Get(url)
 	if err != nil {
